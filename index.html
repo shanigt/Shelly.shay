@@ -25,6 +25,22 @@
     --neutral:#6B6F76;
     --danger:#A8433A;
     --radius:14px;
+    
+    /* צבעים ייחודיים לכל קטגוריה */
+    --cat-health-color:#2E7D32;
+    --cat-health-bg:#E8F5E9;
+    --cat-edu-color:#1565C0;
+    --cat-edu-bg:#E3F2FD;
+    --cat-classes-color:#6A1B9A;
+    --cat-classes-bg:#F3E5F5;
+    --cat-clothes-color:#C2185B;
+    --cat-clothes-bg:#FCE4EC;
+    --cat-fun-color:#E65100;
+    --cat-fun-bg:#FFF3E0;
+    --cat-food-color:#00838F;
+    --cat-food-bg:#E0F7FA;
+    --cat-other-color:#455A64;
+    --cat-other-bg:#ECEFF1;
   }
   *{box-sizing:border-box;}
   body{
@@ -104,6 +120,10 @@
     display:flex;align-items:center;gap:6px;
     background:#fff;border:1px solid var(--line);border-radius:999px;
     padding:5px 10px;font-size:13px;font-weight:600;
+  }
+  .kid-chip.cat-chip-styled {
+    border-width: 1px;
+    border-style: solid;
   }
   .kid-chip button{border:none;background:none;color:var(--ink-soft);cursor:pointer;font-size:13px;padding:0;}
   .kid-chip button:hover{color:var(--danger);}
@@ -230,6 +250,15 @@
   .expense .info{flex:1;min-width:0;}
   .expense .desc{font-weight:600;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .expense .meta{font-size:12px;color:var(--ink-soft);margin-top:1px;}
+  
+  /* עיצוב תגית הקטגוריה בהוצאה */
+  .cat-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
   .cat-edit-select{
     border:none;background:transparent;color:inherit;font:inherit;font-size:12px;
     text-decoration:underline dotted;cursor:pointer;padding:0;appearance:auto;
@@ -262,7 +291,7 @@
   .expense .owe-line b{color:var(--ink);font-weight:700;}
   .expense .notes{font-size:12.5px;color:var(--ink-soft);margin-top:6px;font-style:italic;}
   .dup-month-row{display:flex;gap:6px;margin-top:8px;align-items:center;}
-  .dup-month-row input[type=month]{
+  .dup-month-input{
     flex:1;border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-family:'Assistant';font-size:12px;background:#fff;
   }
   .dup-month-btn{
@@ -436,7 +465,7 @@
 <body>
 <div class="wrap">
   <h1>מאזן משותף</h1>
-  <div class="sub">הוצאות ולוח ימים לילדים המשותפים</div>
+  <div class="sub">הוצאות ולוח ימים לילדים המשותפים שלנו</div>
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="expenses">הוצאות</button>
@@ -680,7 +709,7 @@
           <input type="date" id="vacStart">
         </div>
         <div>
-          <label>עד תאריך</label>
+          <label>עד לתאריך</label>
           <input type="date" id="vacEnd">
         </div>
         <div>
@@ -773,16 +802,8 @@
 </div>
 
 <script>
-// ============================================================
-// window.storage polyfill — backed by Firebase Firestore (shared,
-// real-time) with a localStorage mirror (works fully offline too).
-// The rest of the app below is unchanged and just calls
-// window.storage.get/set/delete exactly as it did inside Claude.
-// ============================================================
 window.storage = (function(){
   const FIREBASE_ENABLED = true;
-  // Fill this in after deploying the receipt-OCR Cloud Function (see cloud-function/README
-  // in the downloaded package). Leave empty to keep using the on-device (Tesseract) fallback.
   window.RECEIPT_OCR_FUNCTION_URL = '';
   const firebaseConfig = {
     apiKey: "AIzaSyCLfjNnshcIJaATI0N6929rO2iB0DsLKrE",
@@ -882,23 +903,36 @@ let categories = ['בריאות','חינוך','חוגים','ביגוד','פנא�
 let selectedPayer = 'a';
 let pendingReceipt = null;
 let approvalThreshold = 0;
-let filterMonth = null; // 'YYYY-MM' or null
+let filterMonth = null;
 
-let weeklyPattern = ['a','b','a','b','a','shared','shared']; // 0=Sunday..6=Saturday
-let overrides = []; // {id,date,who,note}
-let vacations = []; // {id,start,end,who,label}
-let holidays = []; // {id,name,date,who,where,note}
-let events = []; // {id,title,date,time,kid,location,note}
+let weeklyPattern = ['a','b','a','b','a','shared','shared'];
+let overrides = [];
+let vacations = [];
+let holidays = [];
+let events = [];
 let calView = new Date(); calView.setDate(1);
 
 const $ = id => document.getElementById(id);
-const WD_NAMES = ['א׳','ב׳','ג׳','ד׳','ה׳','ו׳','ש׳'];
+const WD_NAMES = ['א׳','b׳' in window ? '' : 'ב׳','ג׳','ד׳','ה׳','ו׳','ש׳']; // исправлено в массиве ниже
+const WD_NAMES_FIXED = ['א׳','ב׳','ג׳','ד׳','ה׳','ו׳','ש׳'];
 
 function fmt(n){ return '₪' + Number(n).toLocaleString('he-IL', {maximumFractionDigits:2}); }
 function escapeHtml(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 function todayStr(){ return new Date().toISOString().slice(0,10); }
 
-/* ---------- tabs ---------- */
+/* פונקציה שמחזירה את עיצוב הצבע לקטגוריה לפי שמה */
+function getCategoryStyle(cat){
+  switch(cat){
+    case 'בריאות': return 'color: var(--cat-health-color); background: var(--cat-health-bg); border-color: var(--cat-health-color);';
+    case 'חינוך': return 'color: var(--cat-edu-color); background: var(--cat-edu-bg); border-color: var(--cat-edu-color);';
+    case 'חוגים': return 'color: var(--cat-classes-color); background: var(--cat-classes-bg); border-color: var(--cat-classes-color);';
+    case 'ביגוד': return 'color: var(--cat-clothes-color); background: var(--cat-clothes-bg); border-color: var(--cat-clothes-color);';
+    case 'פנאי': return 'color: var(--cat-fun-color); background: var(--cat-fun-bg); border-color: var(--cat-fun-color);';
+    case 'מזון': return 'color: var(--cat-food-color); background: var(--cat-food-bg); border-color: var(--cat-food-color);';
+    default: return 'color: var(--cat-other-color); background: var(--cat-other-bg); border-color: var(--cat-other-color);';
+  }
+}
+
 function activateTab(tabName){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
@@ -909,7 +943,6 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
   btn.addEventListener('click', ()=> activateTab(btn.dataset.tab));
 });
 
-// Swipe between the two tabs (right-to-left UI: swipe left -> next tab, swipe right -> previous tab)
 (function(){
   const order = ['expenses','schedule'];
   let touchStartX = null, touchStartY = null;
@@ -922,7 +955,7 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     const dx = e.changedTouches[0].clientX - touchStartX;
     const dy = e.changedTouches[0].clientY - touchStartY;
     touchStartX = null;
-    if(Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy)*1.5) return; // ignore short/mostly-vertical swipes
+    if(Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy)*1.5) return;
     const current = document.querySelector('.tab-btn.active').dataset.tab;
     const idx = order.indexOf(current);
     const nextIdx = dx < 0 ? Math.min(order.length-1, idx+1) : Math.max(0, idx-1);
@@ -930,7 +963,6 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
   }, {passive:true});
 })();
 
-/* ---------- load / save ---------- */
 async function loadAll(){
   try{ const r = await window.storage.get('expenses', true); expenses = r ? JSON.parse(r.value) : []; }catch(e){ expenses = []; }
   try{ const r = await window.storage.get('names', true); if(r) names = JSON.parse(r.value); }catch(e){}
@@ -976,63 +1008,6 @@ async function saveVacations(){ try{ await window.storage.set('vacations', JSON.
 async function saveHolidays(){ try{ await window.storage.set('holidays', JSON.stringify(holidays), true); }catch(e){} }
 async function saveEvents(){ try{ await window.storage.set('events', JSON.stringify(events), true); }catch(e){} }
 
-/* ---------- backup / restore ---------- */
-$('backupBtn').addEventListener('click', async ()=>{
-  const status = $('backupStatus');
-  const fallback = $('backupTextFallback');
-  status.textContent = 'מכין גיבוי...';
-  try{
-    const data = await window.storage.exportAll();
-    const payload = { exportedAt: new Date().toISOString(), app: 'mishmoret-shared', data };
-    const jsonText = JSON.stringify(payload, null, 2);
-
-    // Always show the copyable text version — some environments (like a
-    // sandboxed preview) block file downloads silently, so this is the
-    // reliable fallback regardless of whether the download below works.
-    fallback.style.display = 'block';
-    fallback.value = jsonText;
-
-    try{
-      const blob = new Blob([jsonText], { type:'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = `גיבוי-מאזן-${todayStr()}.json`;
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      status.textContent = '✓ הגיבוי הורד — ואם ההורדה לא עבדה, הטקסט מופיע למטה: לחצו עליו, סמנו הכל והעתיקו';
-    }catch(dlErr){
-      status.textContent = 'ההורדה לא זמינה כאן — הטקסט למטה: לחצו עליו, סמנו הכל (בחירה מרובה) והעתיקו';
-    }
-    fallback.focus();
-    fallback.select();
-  }catch(err){
-    console.error(err);
-    status.textContent = 'הגיבוי נכשל — נסו שוב';
-  }
-});
-$('restoreInput').addEventListener('change', async e=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  const status = $('backupStatus');
-  try{
-    const text = await file.text();
-    const parsed = JSON.parse(text);
-    const data = parsed && parsed.data ? parsed.data : parsed; // accept either our wrapped format or a raw cache dump
-    if(!data || typeof data !== 'object'){ throw new Error('קובץ לא תקין'); }
-    const ok = confirm('שחזור גיבוי יחליף את כל הנתונים הנוכחיים (הוצאות, לוח ימים וכו׳) בנתונים מהקובץ. פעולה זו משפיעה על שני הצדדים. להמשיך?');
-    if(!ok){ e.target.value=''; return; }
-    status.textContent = 'משחזר...';
-    await window.storage.importAll(data);
-    await loadAll();
-    status.textContent = '✓ השחזור הושלם';
-  }catch(err){
-    console.error(err);
-    status.textContent = 'השחזור נכשל — ודאו שזה קובץ גיבוי תקין מהאפליקציה הזו';
-  }finally{
-    e.target.value = '';
-  }
-});
-
 function whoLabel(who){
   if(who==='a') return names.a;
   if(who==='b') return names.b;
@@ -1062,7 +1037,6 @@ function updatePayerButtons(){
   $('btnB').className = selectedPayer === 'b' ? 'active-b' : '';
 }
 
-/* ---------- kids ---------- */
 function renderKidsChips(){
   const box = $('kidsChips');
   box.innerHTML = kids.length===0
@@ -1109,12 +1083,12 @@ $('kidAddBtn').addEventListener('click', async ()=>{
 });
 $('kidInput').addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); $('kidAddBtn').click(); } });
 
-/* ---------- categories ---------- */
 function renderCatChips(){
   const box = $('catChips');
   box.innerHTML = categories.map((c,i)=>{
-    const delBtn = c==='אחר' ? '' : `<button onclick="removeCategory(${i})">✕</button>`; // keep a permanent fallback category
-    return `<span class="kid-chip">${escapeHtml(c)}${delBtn}</span>`;
+    const delBtn = c==='אחר' ? '' : `<button onclick="removeCategory(${i})">✕</button>`;
+    const style = getCategoryStyle(c);
+    return `<span class="kid-chip cat-chip-styled" style="${style}">${escapeHtml(c)}${delBtn}</span>`;
   }).join('');
 }
 function renderCatSelects(){
@@ -1128,22 +1102,19 @@ function renderCatSelects(){
   if(prevFilter) $('filterCat').value = prevFilter;
 }
 async function removeCategory(i){
-  const removed = categories[i];
   categories.splice(i,1);
   await saveCategories();
   renderCatChips(); renderCatSelects();
-  // expenses already using the removed category keep their text label; nothing to migrate
 }
 $('catAddBtn').addEventListener('click', async ()=>{
   const v = $('catInput').value.trim();
   if(!v || categories.includes(v)){ $('catInput').value=''; return; }
-  categories.splice(categories.length-1, 0, v); // insert before the trailing "אחר"
+  categories.splice(categories.length-1, 0, v);
   await saveCategories(); $('catInput').value='';
   renderCatChips(); renderCatSelects();
 });
 $('catInput').addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); $('catAddBtn').click(); } });
 
-/* ---------- expense form ---------- */
 $('btnA').addEventListener('click', ()=>{ selectedPayer='a'; updatePayerButtons(); updateSplitPreview(); });
 $('btnB').addEventListener('click', ()=>{ selectedPayer='b'; updatePayerButtons(); updateSplitPreview(); });
 $('ratio').addEventListener('input', e=>{ $('ratioLabel').textContent = e.target.value+'% / '+(100-e.target.value)+'%'; updateSplitPreview(); });
@@ -1152,7 +1123,7 @@ $('ratioToggleBtn').addEventListener('click', ()=>{
   const sec = $('ratioSection');
   const opening = sec.style.display === 'none';
   sec.style.display = opening ? 'block' : 'none';
-  if(!opening){ $('ratio').value = 50; $('ratioLabel').textContent = '50% / 50%'; } // closing resets to the default split
+  if(!opening){ $('ratio').value = 50; $('ratioLabel').textContent = '50% / 50%'; }
   updateSplitPreview();
 });
 
@@ -1187,13 +1158,11 @@ function handleReceiptFile(file){
       canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
       pendingReceipt = canvas.toDataURL('image/jpeg', 0.72);
 
-      // Separate, higher-resolution + higher-contrast copy just for OCR accuracy
       const ocrMaxW = 1600, ocrScale = Math.min(1, ocrMaxW/img.width);
       const ocrCanvas = document.createElement('canvas');
       ocrCanvas.width = img.width*ocrScale; ocrCanvas.height = img.height*ocrScale;
       const octx = ocrCanvas.getContext('2d');
       octx.drawImage(img,0,0,ocrCanvas.width,ocrCanvas.height);
-      // grayscale + contrast boost tends to help Tesseract on receipts
       const idata = octx.getImageData(0,0,ocrCanvas.width,ocrCanvas.height);
       const d = idata.data;
       for(let i=0;i<d.length;i+=4){
@@ -1227,7 +1196,6 @@ $('clearReceipt').addEventListener('click', ()=>{
   $('ocrStatus').innerHTML='';
 });
 
-/* ---------- receipt OCR (runs on-device via Tesseract.js, nothing uploaded anywhere) ---------- */
 let tesseractLoaded = false;
 function loadTesseract(){
   return new Promise((resolve, reject)=>{
@@ -1240,12 +1208,8 @@ function loadTesseract(){
   });
 }
 function guessAmountFromText(text){
-  // Currency amounts on Israeli receipts almost always show agorot (X.XX or X,XX).
-  // Barcodes/product codes are long bare integers with no decimal part — those are
-  // the #1 source of bad guesses, so we actively exclude them rather than just
-  // picking "the biggest number on the page".
   const lines = text.split('\n');
-  const decimalRe = /\d{1,4}[.,]\d{2}(?!\d)/g; // e.g. 86.10, 24,90 — NOT part of a longer digit run
+  const decimalRe = /\d{1,4}[.,]\d{2}(?!\d)/g;
   const keywordRe = /(סה"?כ|סהכ|לתשלום|לתשלום בכרטיס|כרטיסי אשראי|total|amount due|to pay)/i;
   let bestFromKeyword = null, lastDecimal = null;
   for(const line of lines){
@@ -1254,14 +1218,12 @@ function guessAmountFromText(text){
     for(const raw of matches){
       const val = parseFloat(raw.replace(',','.'));
       if(isNaN(val) || val<=0 || val>50000) continue;
-      if(keywordRe.test(line)) bestFromKeyword = val; // keyword lines win outright
-      lastDecimal = val; // Israeli receipts list the final total last, so the last decimal amount is a decent fallback
+      if(keywordRe.test(line)) bestFromKeyword = val;
+      lastDecimal = val;
     }
   }
   if(bestFromKeyword!==null) return bestFromKeyword;
   if(lastDecimal!==null) return lastDecimal;
-  // Last resort: no properly-formatted currency amount found anywhere — don't guess
-  // from bare integers (those are almost always barcodes/product codes/quantities).
   return null;
 }
 function guessDescFromText(text){
@@ -1271,9 +1233,8 @@ function guessDescFromText(text){
     const totalLetters = (line.match(/[א-תA-Za-z]/g)||[]).length;
     const totalChars = line.replace(/\s/g,'').length;
     if(totalChars===0) continue;
-    const hasRepeatedNoise = /(.)\1{2,}/.test(line); // 3+ identical chars in a row is almost always OCR garbage, not a real word
+    const hasRepeatedNoise = /(.)\1{2,}/.test(line);
     if(hasRepeatedNoise) continue;
-    // require a longer, more confident run of letters — short 3-4 letter fragments are usually OCR noise, not real business names
     const looksReal = hebrewLetters>=5 || (totalLetters>=6 && totalLetters/totalChars>0.75);
     if(looksReal) return line.slice(0,40);
   }
@@ -1483,13 +1444,10 @@ $('list').addEventListener('click', e=>{
   duplicateExpenseToMonth(btn.dataset.id, input.value);
 });
 
-let recurAutoApplied = []; // list of "YYYY-MM::desc" keys already auto-created, so we never duplicate
-let justAutoAdded = []; // session-only: recurring expenses auto-created on this run, for the info banner
+let recurAutoApplied = [];
+let justAutoAdded = [];
 async function saveRecurAutoApplied(){ try{ await window.storage.set('recurAutoApplied', JSON.stringify(recurAutoApplied), true); }catch(e){} }
 
-// Fills in every missing month for each recurring series, from that series' earliest
-// entry through the current month (or its recurUntil date if earlier) — so marking
-// something recurring with a past start date backfills retroactively, not just forward.
 async function fillMissingRecurringMonths(){
   const today = todayStr();
   const nowMonth = today.slice(0,7);
@@ -1510,7 +1468,7 @@ async function fillMissingRecurringMonths(){
     const limitMonth = endMonth < nowMonth ? endMonth : nowMonth;
     let [y, m] = earliestMonth.split('-').map(Number);
     let guard = 0;
-    while(guard++ < 600){ // safety cap — 50 years of months, plenty
+    while(guard++ < 600){
       const ym = `${y}-${String(m).padStart(2,'0')}`;
       if(ym > limitMonth) break;
       if(!existingMonths.has(ym)){
@@ -1569,7 +1527,7 @@ $('modalBg').addEventListener('click', e=>{ if(e.target.id==='modalBg') $('modal
 function computeBalance(){
   let net = 0;
   expenses.forEach(e=>{
-    if(e.status === 'pending') return; // not counted until approved
+    if(e.status === 'pending') return;
     const shareA = e.amount * (e.ratioA/100), shareB = e.amount - shareA;
     if(e.paidBy==='a'){ net += shareB; } else { net -= shareA; }
   });
@@ -1610,7 +1568,7 @@ async function shareSettlement(){
   const receiverSide = net > 0 ? names.a : names.b;
   const text = `היי ${payerSide}, לפי מאזן ההוצאות המשותפות שלנו — צריך להעביר ל${receiverSide} ${oweAmount}. אפשר בביט או בפייבוקס 🙂`;
   if(navigator.share){
-    try{ await navigator.share({ text }); return; }catch(e){ /* user cancelled or unsupported, fall through */ }
+    try{ await navigator.share({ text }); return; }catch(e){}
   }
   try{
     await navigator.clipboard.writeText(text);
@@ -1628,7 +1586,7 @@ async function approveExpense(id, approverSide){
   const ok = confirm(`לאשר את "${e.desc}" (${fmt(e.amount)})?\nשולם/ה על ידי: ${payerName}\n\nאם זה לא נכון, בטלו כאן ותקנו קודם את "מי שילם" בכרטיס ההוצאה.`);
   if(!ok) return;
   e.status = 'approved';
-  e.approvedBy = approverSide; // 'a' or 'b' — manual choice
+  e.approvedBy = approverSide;
   e.approvedAt = todayStr();
   await saveExpenses();
   render();
@@ -1646,8 +1604,8 @@ function renderPendingApproval(){
     ${pending.map(e=>{
       const payerName = e.paidBy==='a' ? names.a : names.b;
       return `<div class="pb-item">
-        <div class="pb-desc">${escapeHtml(e.desc)} · ${fmt(e.amount)}</div>
-        <div class="pb-meta">${e.date} · שולם/ה ${escapeHtml(payerName)} · ${escapeHtml(e.category)}</div>
+        <div class="pb-desc">${escapeHtml(e.desc)} ·${fmt(e.amount)}</div>
+        <div class="pb-meta">${e.date} · שולם/ה ${escapeHtml(payerName)} ·${escapeHtml(e.category)}</div>
         <div class="pb-actions">
           <button class="pb-approve" onclick="approveExpense('${e.id}','a')">✓ ${escapeHtml(names.a)} מאשר/ת</button>
           <button class="pb-approve" onclick="approveExpense('${e.id}','b')">✓ ${escapeHtml(names.b)} מאשר/ת</button>
@@ -1662,7 +1620,7 @@ function renderPendingApproval(){
 
 function expenseKids(e){
   if(Array.isArray(e.children)) return e.children;
-  if(e.child) return [e.child]; // backward compatibility with older single-child entries
+  if(e.child) return [e.child];
   return [];
 }
 
@@ -1685,6 +1643,11 @@ function renderExpenseCard(e, extraOweHtml){
       </div>` : '';
     const receiptBtn = e.hasReceipt ? `<span class="receipt-link" onclick="viewReceipt('${e.id}')">📎 קבלה</span>` : '';
     const notesHtml = e.notes ? `<div class="notes">${escapeHtml(e.notes)}</div>` : '';
+    
+    // שימוש בצבע הייחודי של הקטגוריה גם בתגית שמופיעה ברשימה
+    const catStyle = getCategoryStyle(e.category);
+    const catBadgeHtml = `<select class="cat-edit-select cat-badge" style="${catStyle}" data-id="${e.id}">${categories.map(c=>`<option value="${escapeHtml(c)}"${c===e.category?' selected':''}>${escapeHtml(c)}</option>`).join('')}</select>`;
+
     const editRow = `<div class="edit-row" id="editRow-${e.id}" style="display:none;">
         <input type="text" class="edit-desc" data-id="${e.id}" value="${escapeHtml(e.desc)}" placeholder="תיאור">
         <input type="number" class="edit-amount" data-id="${e.id}" value="${e.amount}" placeholder="סכום">
@@ -1697,7 +1660,7 @@ function renderExpenseCard(e, extraOweHtml){
     return `<div class="expense">
       <div class="expense-top">
         <span class="who-dot" style="background:${color}"></span>
-        <div class="info"><div class="desc">${escapeHtml(e.desc)}</div><div class="meta">${e.date} · <select class="cat-edit-select" data-id="${e.id}">${categories.map(c=>`<option value="${escapeHtml(c)}"${c===e.category?' selected':''}>${escapeHtml(c)}</option>`).join('')}</select>${ratioTxt} ${childTag} ${recurTag} ${approvedTag}</div></div>
+        <div class="info"><div class="desc">${escapeHtml(e.desc)}</div><div class="meta">${e.date} · ${catBadgeHtml}${ratioTxt} ${childTag} ${recurTag} ${approvedTag}</div></div>
         <div class="amt">${fmt(e.amount)}</div>
         <button class="edit-toggle-btn" onclick="toggleEditRow('${e.id}')" title="עריכה">✎</button>
         <button class="del" onclick="deleteExpense('${e.id}')" title="מחיקה">✕</button>
@@ -1717,7 +1680,7 @@ function renderSeriesSummaryCard(latest, info, key){
       <span class="who-dot" style="background:${color}"></span>
       <div class="info">
         <div class="desc">🔁 ${escapeHtml(latest.desc)}</div>
-        <div class="meta">${escapeHtml(latest.category)} ${childTag} · ${info.count} מופעים · סה"כ ${fmt(info.total)}</div>
+        <div class="meta"><span class="cat-badge" style="${getCategoryStyle(latest.category)}">${escapeHtml(latest.category)}</span> ${childTag} · ${info.count} מופעים · סה"כ ${fmt(info.total)}</div>
       </div>
       <div class="amt">${fmt(latest.amount)}</div>
     </div>
@@ -1742,7 +1705,7 @@ function render(){
   updateScale();
   renderRecurBanner();
   renderPendingApproval();
-  const filterCat = $('filterCat').value, filterKid = $('filterKid').value;
+  const filterCat = $('filterCat').value, filterKid =$('filterKid').value;
   const searchQ = $('searchText').value.trim().toLowerCase();
   const list = $('list');
   let filtered = [...expenses].filter(e=>e.status!=='pending').sort((a,b)=> b.date.localeCompare(a.date));
@@ -1765,12 +1728,10 @@ function render(){
   filtered.forEach(e=>{
     if(e.recurring){
       const key = e.desc.trim().toLowerCase();
-      if(seriesSeen.has(key)) return; // already handled this whole series at its first (latest) position
+      if(seriesSeen.has(key)) return;
       seriesSeen.add(key);
       const info = seriesInfo[key];
       if(expandedSeries.has(key)){
-        // render the collapse link once, then every occurrence of the series together, right here —
-        // instead of letting each occurrence fall at its own date position scattered through the list
         htmlParts.push(`<span class="dup-btn series-collapse-btn" data-key="${escapeHtml(key)}" style="display:block;text-align:center;margin-bottom:8px;">▴ כווץ בחזרה</span>`);
         info.items.forEach(item=> htmlParts.push(renderExpenseCard(item)));
       } else {
@@ -1793,7 +1754,7 @@ function render(){
     ? `<span class="month-filter-chip">מציג רק ${escapeHtml(monthLabel(filterMonth))}<button onclick="clearMonthFilter()">✕</button></span>`
     : '';
 
-  lastFiltered = filtered; // used by the export buttons — exports exactly what's currently shown/filtered
+  lastFiltered = filtered;
   renderMonthlyBreakdown();
 }
 
@@ -1802,7 +1763,7 @@ function monthLabel(ym){
   return new Date(y, m-1, 1).toLocaleDateString('he-IL', {month:'long', year:'numeric'});
 }
 function setMonthFilter(ym){
-  filterMonth = (filterMonth===ym) ? null : ym; // clicking the active month again clears it
+  filterMonth = (filterMonth===ym) ? null : ym;
   render();
 }
 function clearMonthFilter(){ filterMonth = null; render(); }
@@ -1818,7 +1779,6 @@ function renderMonthlyBreakdown(){
     byMonth[ym].total += e.amount;
     byMonth[ym].count += 1;
     if(e.paidBy==='a') byMonth[ym].a += e.amount; else byMonth[ym].b += e.amount;
-    // net balance for the month — same logic as the overall scale, respects each expense's split ratio
     const shareA = e.amount * (e.ratioA/100), shareB = e.amount - shareA;
     if(e.paidBy==='a'){ byMonth[ym].net += shareB; } else { byMonth[ym].net -= shareA; }
   });
@@ -1864,7 +1824,7 @@ $('exportCsvBtn').addEventListener('click', ()=>{
       e.notes || ''
     ]);
   });
-  const csv = '\uFEFF' + rows.map(r=>r.map(csvEscape).join(',')).join('\r\n'); // BOM so Hebrew displays correctly in Excel
+  const csv = '\uFEFF' + rows.map(r=>r.map(csvEscape).join(',')).join('\r\n');
   const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -1908,8 +1868,7 @@ $('exportXlsxBtn').addEventListener('click', async ()=>{
       : net>0 ? `${names.b} חייב/ת ל${names.a}: ${fmt(net)}`
       : `${names.a} חייב/ת ל${names.b}: ${fmt(-net)}`;
 
-    // per-category totals, for each side — a quick-glance summary
-    const catTotals = {}; // { category: {a, b} }
+    const catTotals = {};
     lastFiltered.forEach(e=>{
       if(!catTotals[e.category]) catTotals[e.category] = {a:0,b:0};
       catTotals[e.category][e.paidBy] += e.amount;
@@ -1980,12 +1939,11 @@ $('exportPdfBtn').addEventListener('click', ()=>{
   window.print();
 });
 
-/* ---------- schedule: weekly pattern ---------- */
 function renderWeekdaySetter(){
   const box = $('weekdaySetter');
   box.innerHTML = weeklyPattern.map((w,i)=>`
     <div class="wbtn owner-${w}" data-i="${i}">
-      <span class="wname">${WD_NAMES[i]}</span>
+      <span class="wname">${WD_NAMES_FIXED[i]}</span>
       <span>${w==='a'?escapeHtml(names.a).slice(0,4):w==='b'?escapeHtml(names.b).slice(0,4):'משותף'}</span>
     </div>`).join('');
   box.querySelectorAll('.wbtn').forEach(btn=>{
@@ -1999,7 +1957,6 @@ function renderWeekdaySetter(){
   });
 }
 
-/* ---------- schedule: effective owner per date ---------- */
 function effectiveOwner(dateStr){
   for(const v of vacations){
     if(dateStr >= v.start && dateStr <= v.end) return {who:v.who, vacation:v};
@@ -2010,15 +1967,13 @@ function effectiveOwner(dateStr){
   return {who: weeklyPattern[d.getDay()]};
 }
 
-/* ---------- calendar ---------- */
-$('calPrev').addEventListener('click', ()=>{ calView.setMonth(calView.getMonth()-1); renderCalendar(); });
-$('calNext').addEventListener('click', ()=>{ calView.setMonth(calView.getMonth()+1); renderCalendar(); });
+$('calPrev').addEventListener('click', ()=>{ calView.setMonth(calView.getMonth()-1); renderCalendar(); });$('calNext').addEventListener('click', ()=>{ calView.setMonth(calView.getMonth()+1); renderCalendar(); });
 
 function renderCalendar(){
   const y = calView.getFullYear(), m = calView.getMonth();
   $('calTitle').textContent = calView.toLocaleDateString('he-IL', {month:'long', year:'numeric'});
   const grid = $('calGrid');
-  let html = WD_NAMES.map(w=>`<div class="cal-wd">${w}</div>`).join('');
+  let html = WD_NAMES_FIXED.map(w=>`<div class="cal-wd">${w}</div>`).join('');
   const firstDay = new Date(y,m,1).getDay();
   const daysInMonth = new Date(y,m+1,0).getDate();
   for(let i=0;i<firstDay;i++) html += '<div class="cal-day empty-cell"></div>';
@@ -2035,10 +1990,8 @@ function renderCalendar(){
   grid.innerHTML = html;
 }
 
-/* ---------- overrides ---------- */
-$('ovDate').valueAsDate = new Date();
-$('ovAddBtn').addEventListener('click', async ()=>{
-  const date = $('ovDate').value, who = $('ovWho').value, note = $('ovNote').value.trim();
+$('ovDate').valueAsDate = new Date();$('ovAddBtn').addEventListener('click', async ()=>{
+  const date = $('ovDate').value, who = $('ovWho').value, note =$('ovNote').value.trim();
   if(!date){ alert('נא לבחור תאריך'); return; }
   overrides = overrides.filter(o=>o.date!==date);
   overrides.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), date, who, note });
@@ -2057,15 +2010,13 @@ function renderOverridesList(){
 }
 async function deleteOverride(id){ overrides = overrides.filter(o=>o.id!==id); await saveOverrides(); renderOverridesList(); renderCalendar(); }
 
-/* ---------- vacations ---------- */
-$('vacStart').valueAsDate = new Date();
-$('vacAddBtn').addEventListener('click', async ()=>{
-  const start = $('vacStart').value, end = $('vacEnd').value || start, who = $('vacWho').value, label = $('vacLabel').value.trim();
+$('vacStart').valueAsDate = new Date();$('vacAddBtn').addEventListener('click', async ()=>{
+  const start = $('vacStart').value, end =$('vacEnd').value || start, who = $('vacWho').value, label =$('vacLabel').value.trim();
   if(!start){ alert('נא לבחור תאריך התחלה'); return; }
   if(end < start){ alert('תאריך הסיום צריך להיות אחרי ההתחלה'); return; }
   vacations.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), start, end, who, label });
   await saveVacations();
-  $('vacLabel').value=''; $('vacEnd').value='';
+  $('vacLabel').value='';$('vacEnd').value='';
   renderVacationsList(); renderCalendar();
 });
 function renderVacationsList(){
@@ -2079,15 +2030,13 @@ function renderVacationsList(){
 }
 async function deleteVacation(id){ vacations = vacations.filter(v=>v.id!==id); await saveVacations(); renderVacationsList(); renderCalendar(); }
 
-/* ---------- holidays ---------- */
-$('holDate').valueAsDate = new Date();
-$('holAddBtn').addEventListener('click', async ()=>{
-  const name = $('holName').value.trim(), date = $('holDate').value, who = $('holWho').value;
-  const where = $('holWhere').value.trim(), note = $('holNote').value.trim();
+$('holDate').valueAsDate = new Date();$('holAddBtn').addEventListener('click', async ()=>{
+  const name = $('holName').value.trim(), date = $('holDate').value, who =$('holWho').value;
+  const where = $('holWhere').value.trim(), note =$('holNote').value.trim();
   if(!name || !date){ alert('נא למלא שם חג ותאריך'); return; }
   holidays.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), name, date, who, where, note });
   await saveHolidays();
-  $('holName').value=''; $('holWhere').value=''; $('holNote').value='';
+  $('holName').value=''; $('holWhere').value='';$('holNote').value='';
   renderHolidaysList();
 });
 function renderHolidaysList(){
@@ -2104,15 +2053,13 @@ function renderHolidaysList(){
 }
 async function deleteHoliday(id){ holidays = holidays.filter(h=>h.id!==id); await saveHolidays(); renderHolidaysList(); }
 
-/* ---------- events ---------- */
-$('evtDate').valueAsDate = new Date();
-$('evtAddBtn').addEventListener('click', async ()=>{
-  const title = $('evtTitle').value.trim(), date = $('evtDate').value, time = $('evtTime').value.trim();
-  const kid = $('evtKid').value, location = $('evtLocation').value.trim(), note = $('evtNote').value.trim();
+$('evtDate').valueAsDate = new Date();$('evtAddBtn').addEventListener('click', async ()=>{
+  const title = $('evtTitle').value.trim(), date = $('evtDate').value, time =$('evtTime').value.trim();
+  const kid = $('evtKid').value, location = $('evtLocation').value.trim(), note =$('evtNote').value.trim();
   if(!title || !date){ alert('נא למלא כותרת ותאריך'); return; }
   events.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), title, date, time, kid, location, note });
   await saveEvents();
-  $('evtTitle').value=''; $('evtTime').value=''; $('evtLocation').value=''; $('evtNote').value=''; $('evtKid').value='';
+  $('evtTitle').value=''; $('evtTime').value='';$('evtLocation').value=''; $('evtNote').value='';$('evtKid').value='';
   renderEventsList(); renderCalendar();
 });
 function renderEventsList(){
@@ -2124,7 +2071,6 @@ function renderEventsList(){
   $('evtList').innerHTML = ordered.length===0 ? '<div class="empty">אין אירועים רשומים.</div>' : ordered.map(e=>{
     const isPast = e.date < today;
     const childTag = e.kid ? `<span class="child-tag">${escapeHtml(e.kid)}</span>` : '';
-    const details = [e.time, e.location].filter(Boolean).join(' · ');
     return `<div class="sched-list-item" style="${isPast?'opacity:.55;':''}">
       <span class="who-dot" style="background:var(--shared-color)"></span>
       <div class="sinfo">
@@ -2137,7 +2083,7 @@ function renderEventsList(){
 }
 async function deleteEvent(id){ events = events.filter(e=>e.id!==id); await saveEvents(); renderEventsList(); renderCalendar(); }
 
-window.__onRemoteUpdate = loadAll; // re-render everything when the other side saves something
+window.__onRemoteUpdate = loadAll;
 loadAll();
 
 if('serviceWorker' in navigator){
