@@ -4071,6 +4071,1991 @@ if('serviceWorker' in navigator){
 </script>
 </body>
 </html>
+    border:none;background:transparent;font-family:'Assistant';font-weight:600;
+    font-size:15px;color:var(--ink);width:100%;outline:none;
+  }
+
+  .kids-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:12px 14px;
+    margin-bottom:20px;
+  }
+  .kids-card label{display:block;font-size:12px;color:var(--ink-soft);margin-bottom:8px;font-weight:600;}
+  .kids-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px;}
+  .kid-chip{
+    display:flex;align-items:center;gap:6px;
+    background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:5px 10px;font-size:13px;font-weight:600;
+  }
+  .kid-chip.cat-chip-styled {
+    border-width: 1.5px;
+    border-style: solid;
+    font-weight: 700;
+  }
+  .kid-chip button{border:none;background:none;color:var(--ink-soft);cursor:pointer;font-size:13px;padding:0;}
+  .kid-chip button:hover{color:var(--danger);}
+  .kid-add-row{display:flex;gap:6px;}
+  .kid-add-row input{flex:1;}
+  .kid-add-row button{
+    background:var(--ink);color:#fff;border:none;border-radius:9px;
+    padding:0 14px;font-weight:700;cursor:pointer;
+  }
+
+  .scale-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 20px 20px;
+    margin-bottom:24px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  svg#beam{width:100%;max-width:400px;height:auto;display:block;margin:0 auto;}
+  .beam-line{stroke:var(--ink);stroke-width:3;transition:transform .6s cubic-bezier(.34,1.56,.64,1);}
+  .pan{transition:transform .6s cubic-bezier(.34,1.56,.64,1);}
+  .verdict{font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:20px;margin-top:6px;}
+  .verdict .amt{font-weight:900;}
+  .settle-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+  .settle-btn{
+    background:none;border:1px solid var(--line);color:var(--ink-soft);
+    font-family:'Assistant';font-weight:600;font-size:13px;padding:7px 16px;border-radius:999px;cursor:pointer;
+  }
+  .settle-btn:hover{border-color:var(--ink-soft);color:var(--ink);}
+  .settle-btn.primary-share{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .settle-btn.primary-share:hover{opacity:.9;color:#fff;}
+
+  .card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px;
+    margin-bottom:22px;
+  }
+  .card h2{font-family:'Frank Ruhl Libre',serif;font-size:17px;margin:0 0 14px;font-weight:700;}
+  .card h3{font-family:'Frank Ruhl Libre',serif;font-size:15px;margin:0 0 10px;font-weight:700;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .form-grid .full{grid-column:1/-1;}
+  label{display:block;font-size:12px;color:var(--ink-soft);margin-bottom:4px;font-weight:600;}
+  input[type=text],input[type=number],input[type=date],select,textarea{
+    width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 10px;
+    font-family:'Assistant';font-size:14px;background:#fff;color:var(--ink);
+  }
+  textarea{resize:vertical;min-height:52px;font-family:'Assistant';}
+  .payer-toggle{display:flex;gap:8px;}
+  .payer-toggle button{
+    flex:1;border:1.5px solid var(--line);background:#fff;border-radius:9px;
+    padding:9px 6px;font-family:'Assistant';font-weight:600;font-size:13px;cursor:pointer;color:var(--ink-soft);
+  }
+  .payer-toggle button.active-a{border-color:var(--a-color);background:var(--a-tint);color:var(--a-color);}
+  .payer-toggle button.active-b{border-color:var(--b-color);background:var(--b-tint);color:var(--b-color);}
+  .payer-toggle button.active-shared{border-color:var(--shared-color);background:var(--shared-tint);color:var(--shared-color);}
+  .ratio-row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-soft);}
+  .ratio-row input[type=range]{flex:1;}
+  .ratio-toggle-btn{
+    background:none;border:none;color:var(--ink-soft);font-size:12px;font-family:'Assistant';
+    text-decoration:underline;cursor:pointer;padding:0;margin-bottom:8px;
+  }
+  .fix-ratio-btn{
+    display:inline-flex;align-items:center;gap:4px;font-size:11.5px;color:#B8860B;
+    border:1px solid #D9A441;border-radius:999px;padding:3px 9px;cursor:pointer;background:#FBF3E3;
+  }
+  .month-row{
+    display:flex;align-items:center;gap:10px;background:var(--paper-raised);border:1px solid var(--line);
+    border-radius:11px;padding:11px 14px;margin-bottom:8px;cursor:pointer;
+  }
+  .month-row:hover{border-color:var(--ink-soft);}
+  .month-row.active{border-color:var(--ink);background:#fff;}
+  .month-row .m-name{font-weight:700;font-size:14px;flex:1;}
+  .month-row .m-total{font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:15px;}
+  .month-row .m-split{font-size:11px;color:var(--ink-soft);margin-top:2px;}
+  .month-row .m-balance{font-size:12px;color:var(--shared-color);font-weight:600;margin-top:4px;}
+  .month-filter-chip{
+    display:inline-flex;align-items:center;gap:6px;background:var(--shared-tint);color:var(--shared-color);
+    border:1px solid var(--shared-color);border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:700;
+    margin-bottom:10px;
+  }
+  .month-filter-chip button{background:none;border:none;color:inherit;cursor:pointer;font-size:13px;padding:0;}
+  .split-preview{margin-top:8px;font-size:12.5px;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 10px;}
+  .file-row{display:flex;align-items:center;gap:10px;border:1px dashed var(--line);border-radius:9px;padding:8px 10px;background:#fff;}
+  .file-row label.filelbl{margin:0;font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer;flex:1;}
+  .file-row input[type=file]{display:none;}
+  .file-thumb{width:34px;height:34px;border-radius:6px;object-fit:cover;border:1px solid var(--line);}
+  .file-row .clearfile{border:none;background:none;color:var(--ink-soft);cursor:pointer;font-size:13px;}
+  .ocr-btn{
+    margin-top:8px;width:100%;background:#fff;border:1.5px dashed var(--shared-color);color:var(--shared-color);
+    border-radius:9px;padding:9px;font-family:'Assistant';font-weight:700;font-size:13px;cursor:pointer;
+  }
+  .ocr-btn:disabled{opacity:.5;cursor:default;}
+  .ocr-status{font-size:11.5px;color:var(--ink-soft);margin-top:6px;min-height:14px;}
+  .ocr-suggest{
+    display:inline-block;margin:3px 4px 0 0;background:var(--shared-tint);border:1px solid var(--shared-color);
+    color:var(--shared-color);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;
+    font-family:'Assistant';cursor:pointer;
+  }
+  .ocr-suggest.applied{background:var(--a-tint);border-color:var(--a-color);color:var(--a-color);opacity:.7;}
+  .receipt-source-row{display:flex;gap:8px;margin-bottom:8px;}
+  .filelbl-btn{
+    flex:1;text-align:center;background:#fff;border:1.5px solid var(--line);border-radius:9px;
+    padding:10px 6px;font-family:'Assistant';font-weight:700;font-size:13px;color:var(--ink);cursor:pointer;
+  }
+  #receiptCamera{display:none;}
+  .add-btn{
+    margin-top:14px;width:100%;background:var(--ink);color:#fff;border:none;border-radius:9px;
+    padding:11px;font-family:'Assistant';font-weight:700;font-size:15px;cursor:pointer;
+  }
+  .add-btn:hover{opacity:.9;}
+
+  .list-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px;flex-wrap:wrap;}
+  .list-head h2{font-family:'Frank Ruhl Libre',serif;font-size:17px;font-weight:700;margin:0;}
+  .filters{display:flex;gap:6px;}
+  select.small{width:auto;padding:6px 8px;font-size:12px;}
+  .empty{text-align:center;color:var(--ink-soft);font-size:14px;padding:30px 10px;border:1px dashed var(--line);border-radius:var(--radius);}
+  .expense{background:var(--paper-raised);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:8px;}
+  .expense-top{display:flex;align-items:center;gap:10px;}
+  .expense .who-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+  .expense .info{flex:1;min-width:0;}
+  .expense .desc{font-weight:600;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .expense .meta{font-size:12px;color:var(--ink-soft);margin-top:1px;}
+  
+  .cat-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+  }
+
+  .cat-edit-select{
+    border:none;background:transparent;color:inherit;font:inherit;font-size:12px;
+    cursor:pointer;padding:0;appearance:auto;
+  }
+  .payer-edit-select{
+    border:none;background:transparent;color:inherit;font:inherit;font-size:12px;font-weight:600;
+    text-decoration:underline dotted;cursor:pointer;padding:0;appearance:auto;
+  }
+  .edit-toggle-btn{
+    background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:14px;padding:2px 4px;line-height:1;
+  }
+  .edit-toggle-btn:hover{color:var(--ink);}
+  .edit-row{
+    margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:6px;
+  }
+  .edit-row input{flex:1;min-width:90px;border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-family:'Assistant';font-size:13px;background:#fff;}
+  .edit-actions{display:flex;gap:6px;width:100%;}
+  .edit-save-btn, .edit-cancel-btn{
+    flex:1;border:none;border-radius:8px;padding:7px;font-family:'Assistant';font-weight:700;font-size:12.5px;cursor:pointer;
+  }
+  .edit-save-btn{background:var(--ink);color:#fff;}
+  .edit-cancel-btn{background:#fff;border:1px solid var(--line);color:var(--ink-soft);}
+  .expense .amt{font-weight:700;font-size:15px;font-family:'Frank Ruhl Libre',serif;white-space:nowrap;}
+  .expense .del{background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:16px;padding:2px 6px;line-height:1;}
+  .expense .del:hover{color:var(--danger);}
+  .expense .owe-line{
+    font-size:12px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;color:var(--ink-soft);
+  }
+  .expense .owe-line b{color:var(--ink);font-weight:700;}
+  .expense .notes{font-size:12.5px;color:var(--ink-soft);margin-top:6px;font-style:italic;}
+  .dup-month-row{display:flex;gap:6px;margin-top:8px;align-items:center;}
+  .dup-month-input{
+    flex:1;border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-family:'Assistant';font-size:12px;background:#fff;
+  }
+  .dup-month-btn{
+    background:var(--shared-tint);color:var(--shared-color);border:1px solid var(--shared-color);
+    border-radius:8px;padding:6px 10px;font-family:'Assistant';font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap;
+  }
+  .receipt-link{
+    display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:999px;padding:3px 9px;cursor:pointer;background:#fff;
+  }
+  .receipt-link:hover{border-color:var(--ink-soft);color:var(--ink);}
+  .child-tag{display:inline-block;font-size:11px;font-weight:700;color:var(--neutral);background:#fff;border:1px solid var(--line);border-radius:999px;padding:2px 8px;}
+  .child-tag + .child-tag{margin-inline-start:4px;}
+
+  .recur-toggle{
+    display:flex;align-items:center;gap:8px;cursor:pointer;
+    background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 10px;
+    font-size:13px;font-weight:600;color:var(--ink-soft);margin:0;
+  }
+  .recur-toggle input{margin:0;accent-color:var(--ink);width:16px;height:16px;flex-shrink:0;}
+  .recur-tag{
+    display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;color:var(--shared-color);
+    background:var(--shared-tint);border:1px solid var(--shared-color);border-radius:999px;padding:2px 8px;
+  }
+  .dup-btn{
+    display:inline-flex;align-items:center;gap:4px;font-size:11.5px;color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:999px;padding:3px 9px;cursor:pointer;background:#fff;
+  }
+  .dup-btn:hover{border-color:var(--ink-soft);color:var(--ink);}
+  .recur-banner{
+    background:var(--shared-tint);border:1px solid var(--shared-color);border-radius:var(--radius);
+    padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--ink);
+  }
+  .recur-banner .rb-title{font-weight:700;margin-bottom:8px;}
+  .recur-banner .rb-item{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    background:#fff;border-radius:9px;padding:7px 10px;margin-bottom:6px;font-size:12.5px;
+  }
+  .recur-banner .rb-item button{
+    background:var(--ink);color:#fff;border:none;border-radius:7px;padding:5px 10px;font-size:12px;font-weight:700;cursor:pointer;
+  }
+  .recur-banner .rb-dismiss{background:none;border:none;color:var(--ink-soft);font-size:12px;cursor:pointer;text-decoration:underline;padding:0;}
+
+  .pending-banner{
+    background:#FBF3E3;border:1px solid #D9A441;border-radius:var(--radius);
+    padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--ink);
+  }
+  .pending-banner .pb-title{font-weight:700;margin-bottom:8px;}
+  .pending-banner .pb-item{
+    background:#fff;border-radius:9px;padding:9px 11px;margin-bottom:7px;
+  }
+  .pending-banner .pb-item .pb-desc{font-weight:600;font-size:13.5px;margin-bottom:2px;}
+  .pending-banner .pb-item .pb-meta{font-size:11.5px;color:var(--ink-soft);margin-bottom:8px;}
+  .pending-banner .pb-actions{display:flex;gap:8px;}
+  .pending-banner .pb-actions button{
+    flex:1;border:none;border-radius:7px;padding:7px;font-size:12.5px;font-weight:700;cursor:pointer;
+  }
+  .pending-banner .pb-approve{background:var(--a-color);color:#fff;}
+  .pending-banner .pb-reject{background:none;border:1px solid var(--line) !important;color:var(--ink-soft);}
+  .pending-tag{
+    display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;color:#B8860B;
+    background:#FBF3E3;border:1px solid #D9A441;border-radius:999px;padding:2px 8px;
+  }
+
+  .auth-gate{
+    position:fixed;inset:0;background:var(--paper);z-index:100;
+    display:flex;align-items:center;justify-content:center;padding:24px;
+  }
+  .auth-card{
+    background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 22px;max-width:360px;width:100%;text-align:center;
+  }
+  .auth-card h2{font-family:'Frank Ruhl Libre',serif;font-size:20px;margin:0 0 10px;}
+  .auth-card p{font-size:13px;color:var(--ink-soft);margin:0 0 18px;line-height:1.5;}
+  .google-btn{
+    display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+    border-radius:9px;padding:11px 20px;font-family:'Assistant';font-weight:700;font-size:14px;
+    cursor:pointer;color:var(--ink);
+  }
+  .google-btn:hover{border-color:var(--ink-soft);}
+  .role-btn{
+    display:block;width:100%;margin-top:10px;padding:12px;border-radius:9px;border:1.5px solid var(--line);
+    background:#fff;font-family:'Assistant';font-weight:700;font-size:14px;cursor:pointer;color:var(--ink);
+  }
+  .role-btn:hover{border-color:var(--ink);}
+
+  .kid-checks{display:flex;flex-wrap:wrap;gap:7px;}
+  .kid-check{
+    display:inline-flex;align-items:center;gap:6px;
+    background:#fff;border:1.5px solid var(--line);border-radius:999px;
+    padding:6px 12px;font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer;
+  }
+  .kid-check input{margin:0;accent-color:var(--ink);}
+  .kid-check.checked{border-color:var(--shared-color);background:var(--shared-tint);color:var(--shared-color);}
+  .kid-checks .empty-hint{font-size:12px;color:var(--ink-soft);}
+
+  .totals{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+  .totals .t{flex:1;min-width:100px;border-radius:11px;padding:10px 12px;text-align:center;font-size:12px;color:var(--ink-soft);}
+  .totals .t b{display:block;font-family:'Frank Ruhl Libre',serif;font-size:16px;color:var(--ink);margin-top:2px;}
+  .share-note{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:18px;}
+  .export-row{display:flex;gap:8px;margin-top:14px;}
+  .backup-row{display:flex;gap:8px;}
+  .export-btn{
+    flex:1;background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:10px;
+    font-family:'Assistant';font-weight:700;font-size:13px;color:var(--ink);cursor:pointer;
+  }
+  .export-btn:hover{border-color:var(--ink-soft);}
+  #printArea{display:none;}
+  @media print{
+    .no-print, .tabs, .kids-card, .scale-card, .card, .share-note, .names-row, h1, .sub, #pendingApproval, #recurBanner{display:none !important;}
+    #printArea{display:block !important;}
+    body{padding:0;background:#fff;}
+    #printArea h1{font-family:'Frank Ruhl Libre',serif;font-size:22px;margin-bottom:4px;}
+    #printArea .meta-line{font-size:12px;color:#555;margin-bottom:16px;}
+    #printArea table{width:100%;border-collapse:collapse;font-size:11px;}
+    #printArea th, #printArea td{border:1px solid #ccc;padding:5px 7px;text-align:right;}
+    #printArea th{background:#f0f0f0;}
+    #printArea .totals-line{margin-top:14px;font-size:13px;font-weight:700;}
+  }
+
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(28,35,33,.75);align-items:center;justify-content:center;z-index:50;padding:20px;}
+  .modal-bg.open{display:flex;}
+  .modal-bg img{max-width:100%;max-height:85vh;border-radius:8px;}
+  .modal-close{position:absolute;top:18px;left:18px;background:#fff;border:none;border-radius:50%;width:34px;height:34px;font-size:18px;cursor:pointer;}
+
+  .legend{display:flex;gap:14px;font-size:12px;color:var(--ink-soft);margin-bottom:12px;flex-wrap:wrap;}
+  .legend span{display:inline-flex;align-items:center;gap:5px;}
+  .legend i{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .weekday-setter{display:flex;gap:5px;}
+  .weekday-setter .wbtn{
+    flex:1;aspect-ratio:1;border-radius:9px;border:1.5px solid var(--line);background:#fff;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;
+    font-size:11px;font-weight:700;color:var(--ink-soft);gap:2px;
+  }
+  .wbtn .wname{font-size:12px;}
+  .wbtn.owner-a{background:var(--a-tint);border-color:var(--a-color);color:var(--a-color);}
+  .wbtn.owner-b{background:var(--b-tint);border-color:var(--b-color);color:var(--b-color);}
+  .wbtn.owner-shared{background:var(--shared-tint);border-color:var(--shared-color);color:var(--shared-color);}
+
+  .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+  .cal-nav button{border:1px solid var(--line);background:#fff;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:15px;}
+  .cal-nav .cal-title{font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:16px;}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+  .cal-wd{text-align:center;font-size:11px;color:var(--ink-soft);font-weight:700;padding-bottom:4px;}
+  .cal-day{
+    aspect-ratio:1;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-size:12px;font-weight:600;border:1px solid transparent;position:relative;
+  }
+  .cal-day.owner-a{background:var(--a-tint);color:var(--a-color);}
+  .cal-day.owner-b{background:var(--b-tint);color:var(--b-color);}
+  .cal-day.owner-shared{background:var(--shared-tint);color:var(--shared-color);}
+  .cal-day.empty-cell{visibility:hidden;}
+  .cal-day.today{border-color:var(--ink);}
+  .cal-day .vac-mark{position:absolute;top:2px;left:2px;font-size:8px;}
+  .cal-day .ov-mark{position:absolute;bottom:2px;left:2px;font-size:8px;}
+  .cal-day .evt-mark{position:absolute;bottom:2px;right:2px;font-size:8px;}
+
+  .sched-list-item{
+    display:flex;align-items:center;gap:10px;background:var(--paper-raised);border:1px solid var(--line);
+    border-radius:10px;padding:9px 12px;margin-bottom:7px;font-size:13px;
+  }
+  .sched-list-item .who-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .sched-list-item .sinfo{flex:1;}
+  .sched-list-item .sdate{font-weight:700;}
+  .sched-list-item .snote{color:var(--ink-soft);font-size:12px;}
+  .sched-list-item .del{background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:15px;}
+  .sched-list-item .del:hover{color:var(--danger);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>מאזן משותף</h1>
+  <div class="sub">הוצאות ולוח ימים לילדים המשותפים שלנו</div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="expenses">הוצאות</button>
+    <button class="tab-btn" data-tab="schedule">לוח ימים</button>
+  </div>
+
+  <div class="names-row">
+    <div class="name-pill"><span class="dot" style="background:var(--a-color)"></span><input id="nameA" type="text" value="שלי"></div>
+    <div class="name-pill"><span class="dot" style="background:var(--b-color)"></span><input id="nameB" type="text" value="שי"></div>
+  </div>
+
+  <div class="tab-panel active" id="tabExpenses">
+
+    <div class="kids-card">
+      <label>ילדים / בעלי חיים</label>
+      <div class="kids-chips" id="kidsChips"></div>
+      <div class="kid-add-row">
+        <input type="text" id="kidInput" placeholder="שם">
+        <button id="kidAddBtn" type="button">הוספה</button>
+      </div>
+    </div>
+
+    <div class="kids-card">
+      <label>קטגוריות</label>
+      <div class="kids-chips" id="catChips"></div>
+      <div class="kid-add-row">
+        <input type="text" id="catInput" placeholder="קטגוריה חדשה">
+        <button id="catAddBtn" type="button">הוספה</button>
+      </div>
+    </div>
+
+    <div class="kids-card">
+      <label>גיבוי ושחזור</label>
+      <div style="font-size:11.5px;color:var(--ink-soft);margin-bottom:8px;">
+        גיבוי נוסף, מעבר לסנכרון האוטומטי — קובץ שאפשר לשמור בצד או להעביר בין מכשירים.
+      </div>
+      <div class="backup-row">
+        <button type="button" class="export-btn" id="backupBtn">💾 הורדת גיבוי</button>
+        <label class="export-btn" for="restoreInput" id="restoreLbl" style="text-align:center;cursor:pointer;">📥 שחזור מגיבוי</label>
+        <input type="file" id="restoreInput" accept="application/json" style="display:none;">
+      </div>
+      <div class="ocr-status" id="backupStatus"></div>
+      <textarea id="backupTextFallback" readonly style="display:none;width:100%;height:120px;margin-top:8px;font-size:10px;font-family:monospace;direction:ltr;text-align:left;border:1px solid var(--line);border-radius:8px;padding:6px;"></textarea>
+    </div>
+
+    <div class="kids-card">
+      <label>סף לאישור הוצאה גדולה (₪) — 0 = בלי אישור</label>
+      <div class="kid-add-row">
+        <input type="number" id="approvalThreshold" min="0" step="10" placeholder="לדוגמה: 300">
+      </div>
+      <div style="font-size:11.5px;color:var(--ink-soft);margin-top:6px;">הוצאה בסכום הזה ומעלה תיכנס כ"ממתין לאישור" ולא תיכנס למאזן עד שהצד השני יאשר אותה.</div>
+    </div>
+
+    <div class="scale-card">
+      <svg id="beam" viewBox="0 0 400 170">
+        <line x1="200" y1="20" x2="200" y2="70" stroke="var(--ink)" stroke-width="4"/>
+        <circle cx="200" cy="18" r="5" fill="var(--ink)"/>
+        <g id="beamGroup" class="beam-line">
+          <line x1="60" y1="70" x2="340" y2="70" stroke-linecap="round"/>
+        </g>
+        <g id="panA" class="pan">
+          <line x1="60" y1="70" x2="60" y2="105" stroke="var(--a-color)" stroke-width="2"/>
+          <ellipse cx="60" cy="112" rx="34" ry="9" fill="var(--a-tint)" stroke="var(--a-color)" stroke-width="2"/>
+        </g>
+        <g id="panB" class="pan">
+          <line x1="340" y1="70" x2="340" y2="105" stroke="var(--b-color)" stroke-width="2"/>
+          <ellipse cx="340" cy="112" rx="34" ry="9" fill="var(--b-tint)" stroke="var(--b-color)" stroke-width="2"/>
+        </g>
+        <text id="labelA" x="60" y="140" text-anchor="middle" font-family="Assistant" font-size="12" font-weight="700" fill="var(--a-color)"></text>
+        <text id="labelB" x="340" y="140" text-anchor="middle" font-family="Assistant" font-size="12" font-weight="700" fill="var(--b-color)"></text>
+      </svg>
+      <div class="verdict" id="verdict">טוען...</div>
+      <div class="settle-row">
+        <button class="settle-btn primary-share" id="shareBtn" style="display:none">📤 שליחת בקשת תשלום</button>
+        <button class="settle-btn" id="settleBtn">סגירת חשבון (איפוס יתרה)</button>
+      </div>
+      <div style="font-size:11px;color:var(--ink-soft);margin-top:8px;" id="shareHint"></div>
+    </div>
+
+    <div class="card">
+      <h2>הוצאה חדשה</h2>
+      <div class="form-grid">
+        <div class="full">
+          <label>עבור מה</label>
+          <input type="text" id="desc" placeholder="לדוגמה: ציוד לבית ספר">
+        </div>
+        <div>
+          <label>סכום כולל ששולם (₪)</label>
+          <input type="number" id="amount" min="0" step="0.1" placeholder="0">
+        </div>
+        <div>
+          <label>תאריך</label>
+          <input type="date" id="date">
+        </div>
+        <div class="full">
+          <label>מי שילם בפועל</label>
+          <div class="payer-toggle">
+            <button id="btnA" type="button"></button>
+            <button id="btnB" type="button"></button>
+          </div>
+        </div>
+        <div>
+          <label>קטגוריה</label>
+          <select id="category"></select>
+        </div>
+        <div class="full">
+          <label>עבור מי (ניתן לבחור כמה)</label>
+          <div class="kid-checks" id="kidChecks"></div>
+        </div>
+        <div class="full">
+          <button type="button" class="ratio-toggle-btn" id="ratioToggleBtn">✎ שינוי מהחלוקה הרגילה (50/50) — לא חובה</button>
+          <div id="ratioSection" style="display:none;">
+            <label>יחס חלוקה — <span id="ratioLabel">50% / 50%</span></label>
+            <div class="ratio-row">
+              <span id="ratioAmark">א׳</span>
+              <input type="range" id="ratio" min="0" max="100" value="50">
+              <span id="ratioBmark">ב׳</span>
+            </div>
+          </div>
+          <div class="split-preview" id="splitPreview"></div>
+        </div>
+        <div class="full">
+          <label class="recur-toggle" id="recurToggle">
+            <input type="checkbox" id="recurCheck">
+            <span>🔁 הוצאה חוזרת (חודשית) — למשל חוג, ביטוח, מנוי</span>
+          </label>
+          <div id="recurUntilRow" style="display:none;margin-top:8px;">
+            <label>חוזרת עד תאריך (אופציונלי — ריק = ללא הגבלה)</label>
+            <input type="date" id="recurUntil">
+          </div>
+        </div>
+        <div class="full">
+          <label>הערות</label>
+          <textarea id="notes" placeholder="פרטים נוספים, מקום הרכישה וכו׳"></textarea>
+        </div>
+        <div class="full">
+          <label>קבלה (תמונה, אופציונלי)</label>
+          <div class="receipt-source-row">
+            <label class="filelbl-btn" for="receiptCamera">📷 צילום קבלה</label>
+            <label class="filelbl-btn" for="receiptInput">🖼️ בחירה מהגלריה</label>
+          </div>
+          <input type="file" id="receiptCamera" accept="image/*" capture="environment">
+          <div class="file-row" id="receiptRow" style="display:none;">
+            <span class="filelbl" id="receiptLbl">קבלה מצורפת</span>
+            <input type="file" id="receiptInput" accept="image/*">
+            <img id="receiptPreview" class="file-thumb" style="display:none">
+            <button type="button" class="clearfile" id="clearReceipt" style="display:none">הסרה</button>
+          </div>
+          <button type="button" class="ocr-btn" id="ocrBtn" style="display:none">🔍 זיהוי מתמונה (סכום ותיאור)</button>
+          <div class="ocr-status" id="ocrStatus"></div>
+        </div>
+      </div>
+      <button class="add-btn" id="addBtn">הוספת הוצאה</button>
+    </div>
+
+    <div id="pendingApproval"></div>
+
+    <div id="recurBanner"></div>
+
+    <div class="card">
+      <div class="list-head">
+        <h2>היסטוריית הוצאות</h2>
+        <div class="filters">
+          <select id="filterCat" class="small"><option value="all">כל הקטגוריות</option></select>
+          <select id="filterKid" class="small"><option value="all">כולם</option></select>
+        </div>
+      </div>
+      <div id="monthFilterChip"></div>
+      <input type="text" id="searchText" placeholder="🔍 חיפוש בתיאור או בהערות..." style="margin-bottom:12px;">
+      <div id="list"></div>
+      <div class="totals" id="totals"></div>
+      <div class="export-row no-print">
+        <button type="button" class="export-btn" id="exportCsvBtn">📊 ייצוא ל-CSV</button>
+        <button type="button" class="export-btn" id="exportXlsxBtn">📗 ייצוא לאקסל</button>
+        <button type="button" class="export-btn" id="exportPdfBtn">📄 ייצוא ל-PDF</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="list-head">
+        <h2>חלוקה לפי חודשים</h2>
+      </div>
+      <div id="monthlyList"></div>
+    </div>
+
+    <div class="share-note">הנתונים משותפים לשני הצדדים ונשמרים אוטומטית.</div>
+  </div>
+
+  <div id="printArea"></div>
+
+  <div class="tab-panel" id="tabSchedule">
+
+    <div class="legend">
+      <span><i style="background:var(--a-color)"></i><span id="legA">שלי</span></span>
+      <span><i style="background:var(--b-color)"></i><span id="legB">שי</span></span>
+      <span><i style="background:var(--shared-color)"></i>משותף / חלוקה</span>
+    </div>
+
+    <div class="card">
+      <h3>דפוס שבועי קבוע</h3>
+      <div class="weekday-setter" id="weekdaySetter"></div>
+      <div style="font-size:12px;color:var(--ink-soft);margin-top:8px;">לחיצה על יום מחליפה בין שלי / שי / משותף. זה הבסיס — חופשות ושינויים חד־פעמיים דורסים אותו.</div>
+    </div>
+
+    <div class="card">
+      <div class="cal-nav">
+        <button id="calPrev">›</button>
+        <div class="cal-title" id="calTitle"></div>
+        <button id="calNext">‹</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+
+    <div class="card">
+      <h3>שינוי חד־פעמי</h3>
+      <div class="form-grid">
+        <div>
+          <label>תאריך</label>
+          <input type="date" id="ovDate">
+        </div>
+        <div>
+          <label>אצל מי</label>
+          <select id="ovWho"></select>
+        </div>
+        <div class="full">
+          <label>הערה (אופציונלי)</label>
+          <input type="text" id="ovNote" placeholder="לדוגמה: החלפה בגלל אירוע">
+        </div>
+      </div>
+      <button class="add-btn" id="ovAddBtn">הוספת שינוי</button>
+      <div id="ovList" style="margin-top:14px;"></div>
+    </div>
+
+    <div class="card">
+      <h3>חופשה / תקופה מיוחדת</h3>
+      <div class="form-grid">
+        <div>
+          <label>מתאריך</label>
+          <input type="date" id="vacStart">
+        </div>
+        <div>
+          <label>עד לתאריך</label>
+          <input type="date" id="vacEnd">
+        </div>
+        <div>
+          <label>אצל מי</label>
+          <select id="vacWho"></select>
+        </div>
+        <div>
+          <label>שם החופשה</label>
+          <input type="text" id="vacLabel" placeholder="לדוגמה: חופשת קיץ">
+        </div>
+      </div>
+      <button class="add-btn" id="vacAddBtn">הוספת חופשה</button>
+      <div id="vacList" style="margin-top:14px;"></div>
+    </div>
+
+    <div class="card">
+      <h3>חגים</h3>
+      <div style="font-size:12px;color:var(--ink-soft);margin-bottom:12px;">תיעוד — אצל מי היו הילדים בכל חג, ואיפה.</div>
+      <div class="form-grid">
+        <div>
+          <label>שם החג</label>
+          <input type="text" id="holName" list="holSuggest" placeholder="לדוגמה: פסח">
+          <datalist id="holSuggest">
+            <option value="ראש השנה"><option value="יום כיפור"><option value="סוכות">
+            <option value="חנוכה"><option value="פורים"><option value="פסח">
+            <option value="ל״ג בעומר"><option value="שבועות"><option value="יום העצמאות">
+          </datalist>
+        </div>
+        <div>
+          <label>תאריך</label>
+          <input type="date" id="holDate">
+        </div>
+        <div>
+          <label>אצל מי</label>
+          <select id="holWho"></select>
+        </div>
+        <div>
+          <label>איפה</label>
+          <input type="text" id="holWhere" placeholder="לדוגמה: אצל סבא וסבתא, אילת...">
+        </div>
+        <div class="full">
+          <label>הערות</label>
+          <input type="text" id="holNote" placeholder="פרטים נוספים">
+        </div>
+      </div>
+      <button class="add-btn" id="holAddBtn">הוספת חג</button>
+      <div id="holList" style="margin-top:14px;"></div>
+    </div>
+
+    <div class="card">
+      <h3>אירועים של הילדים</h3>
+      <div style="font-size:12px;color:var(--ink-soft);margin-bottom:12px;">אספות הורים, תורים, מסיבות וכו׳ — משותף לשניכם ומופיע בלוח.</div>
+      <div class="form-grid">
+        <div class="full">
+          <label>כותרת</label>
+          <input type="text" id="evtTitle" placeholder="לדוגמה: אספת הורים">
+        </div>
+        <div>
+          <label>תאריך</label>
+          <input type="date" id="evtDate">
+        </div>
+        <div>
+          <label>שעה (אופציונלי)</label>
+          <input type="text" id="evtTime" placeholder="17:30">
+        </div>
+        <div>
+          <label>עבור מי</label>
+          <select id="evtKid"><option value="">משותף / כללי</option></select>
+        </div>
+        <div>
+          <label>מיקום (אופציונלי)</label>
+          <input type="text" id="evtLocation" placeholder="לדוגמה: בית הספר">
+        </div>
+        <div class="full">
+          <label>הערות</label>
+          <input type="text" id="evtNote" placeholder="פרטים נוספים">
+        </div>
+      </div>
+      <button class="add-btn" id="evtAddBtn">הוספת אירוע</button>
+      <div id="evtList" style="margin-top:14px;"></div>
+    </div>
+
+    <div class="share-note">לוח הימים משותף לשני הצדדים ונשמר אוטומטית.</div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modalBg">
+  <button class="modal-close" id="modalClose">✕</button>
+  <img id="modalImg" src="">
+</div>
+
+<script>
+window.storage = (function(){
+  const FIREBASE_ENABLED = true;
+  window.RECEIPT_OCR_FUNCTION_URL = '';
+  const firebaseConfig = {
+    apiKey: "AIzaSyCLfjNnshcIJaATI0N6929rO2iB0DsLKrE",
+    authDomain: "maazan-bc6f5.firebaseapp.com",
+    projectId: "maazan-bc6f5",
+    storageBucket: "maazan-bc6f5.firebasestorage.app",
+    messagingSenderId: "1053706540701",
+    appId: "1:1053706540701:web:3775d569a590e331456674",
+    measurementId: "G-33S117FS87"
+  };
+  const LOCAL_KEY = 'mishmoret_full_v1';
+  let cache = {};
+  let fbSetDoc = null, fbDocRef = null;
+
+  function localLoad(){
+    try{ const raw = localStorage.getItem(LOCAL_KEY); if(raw) cache = JSON.parse(raw); }catch(e){}
+  }
+  function localSave(){
+    try{ localStorage.setItem(LOCAL_KEY, JSON.stringify(cache)); }catch(e){}
+  }
+  localLoad();
+
+  async function persistRemote(){
+    if(fbSetDoc && fbDocRef){
+      try{ await fbSetDoc(fbDocRef, { store: cache }); }catch(e){ console.error('sync failed', e); }
+    }
+  }
+
+  const ready = (async ()=>{
+    if(!FIREBASE_ENABLED) return;
+    try{
+      const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+      const { getAuth, signInAnonymously } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+      const { getFirestore, doc, onSnapshot, setDoc } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      await signInAnonymously(auth);
+      const db = getFirestore(app);
+      fbDocRef = doc(db, 'shared', 'mishmoret');
+      fbSetDoc = setDoc;
+      await new Promise(resolve=>{
+        let first = true;
+        onSnapshot(fbDocRef, snap=>{
+          if(snap.exists()){
+            cache = snap.data().store || {};
+            localSave();
+          }
+          if(first){ first = false; resolve(); }
+          else if(window.__onRemoteUpdate){ window.__onRemoteUpdate(); }
+        }, ()=>{ if(first){ first=false; resolve(); } });
+      });
+    }catch(e){ console.error('Firebase init failed, falling back to local-only storage', e); }
+  })();
+
+  return {
+    async get(key, shared){
+      await ready;
+      return (key in cache) ? { key, value: cache[key], shared: !!shared } : null;
+    },
+    async set(key, value, shared){
+      await ready;
+      cache[key] = value;
+      localSave();
+      persistRemote();
+      return { key, value, shared: !!shared };
+    },
+    async delete(key, shared){
+      await ready;
+      const existed = key in cache;
+      delete cache[key];
+      localSave();
+      persistRemote();
+      return existed ? { key, deleted:true, shared: !!shared } : null;
+    },
+    async list(prefix, shared){
+      await ready;
+      const keys = Object.keys(cache).filter(k=> !prefix || k.startsWith(prefix));
+      return { keys, prefix, shared: !!shared };
+    },
+    async exportAll(){
+      await ready;
+      return JSON.parse(JSON.stringify(cache));
+    },
+    async importAll(obj){
+      await ready;
+      cache = { ...obj };
+      localSave();
+      await persistRemote();
+    }
+  };
+})();
+
+let expenses = [];
+let names = { a: 'שלי', b: 'שי' };
+let kids = ['רוני', 'מאיה', 'עמרי', "צ'רלי (כלב)"];
+let categories = ['בריאות','חינוך','חוגים','ביגוד','פנאי','מזון','אחר'];
+let selectedPayer = 'a';
+let pendingReceipt = null;
+let approvalThreshold = 0;
+let filterMonth = null;
+
+let weeklyPattern = ['a','b','a','b','a','shared','shared'];
+let overrides = [];
+let vacations = [];
+let holidays = [];
+let events = [];
+let calView = new Date(); calView.setDate(1);
+
+const $ = id => document.getElementById(id);
+const WD_NAMES_FIXED = ['א׳','ב׳','ג׳','ד׳','ה׳','ו׳','ש׳'];
+
+function fmt(n){ return '₪' + Number(n).toLocaleString('he-IL', {maximumFractionDigits:2}); }
+function escapeHtml(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+
+function getCategoryStyle(cat){
+  switch(cat){
+    case 'בריאות': return 'color: var(--cat-health-color); background: var(--cat-health-bg); border-color: var(--cat-health-color);';
+    case 'חינוך': return 'color: var(--cat-edu-color); background: var(--cat-edu-bg); border-color: var(--cat-edu-color);';
+    case 'חוגים': return 'color: var(--cat-classes-color); background: var(--cat-classes-bg); border-color: var(--cat-classes-color);';
+    case 'ביגוד': return 'color: var(--cat-clothes-color); background: var(--cat-clothes-bg); border-color: var(--cat-clothes-color);';
+    case 'פנאי': return 'color: var(--cat-fun-color); background: var(--cat-fun-bg); border-color: var(--cat-fun-color);';
+    case 'מזון': return 'color: var(--cat-food-color); background: var(--cat-food-bg); border-color: var(--cat-food-color);';
+    default: return 'color: var(--cat-other-color); background: var(--cat-other-bg); border-color: var(--cat-other-color);';
+  }
+}
+
+function activateTab(tabName){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector(`.tab-btn[data-tab="${tabName}"]`).classList.add('active');
+  $('tab'+tabName.charAt(0).toUpperCase()+tabName.slice(1)).classList.add('active');
+}
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=> activateTab(btn.dataset.tab));
+});
+
+(function(){
+  const order = ['expenses','schedule'];
+  let touchStartX = null, touchStartY = null;
+  document.querySelector('.wrap').addEventListener('touchstart', e=>{
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, {passive:true});
+  document.querySelector('.wrap').addEventListener('touchend', e=>{
+    if(touchStartX===null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    touchStartX = null;
+    if(Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy)*1.5) return;
+    const current = document.querySelector('.tab-btn.active').dataset.tab;
+    const idx = order.indexOf(current);
+    const nextIdx = dx < 0 ? Math.min(order.length-1, idx+1) : Math.max(0, idx-1);
+    if(nextIdx !== idx) activateTab(order[nextIdx]);
+  }, {passive:true});
+})();
+
+async function loadAll(){
+  try{ const r = await window.storage.get('expenses', true); expenses = r ? JSON.parse(r.value) : []; }catch(e){ expenses = []; }
+  try{ const r = await window.storage.get('names', true); if(r) names = JSON.parse(r.value); }catch(e){}
+  try{ const r = await window.storage.get('kids', true); if(r) kids = JSON.parse(r.value); }catch(e){}
+  try{ const r = await window.storage.get('categories', true); if(r) categories = JSON.parse(r.value); }catch(e){}
+  try{ const r = await window.storage.get('weeklyPattern', true); if(r) weeklyPattern = JSON.parse(r.value); }catch(e){}
+  try{ const r = await window.storage.get('overrides', true); overrides = r ? JSON.parse(r.value) : []; }catch(e){ overrides = []; }
+  try{ const r = await window.storage.get('vacations', true); vacations = r ? JSON.parse(r.value) : []; }catch(e){ vacations = []; }
+  try{ const r = await window.storage.get('holidays', true); holidays = r ? JSON.parse(r.value) : []; }catch(e){ holidays = []; }
+  try{ const r = await window.storage.get('events', true); events = r ? JSON.parse(r.value) : []; }catch(e){ events = []; }
+  try{ const r = await window.storage.get('approvalThreshold', true); approvalThreshold = r ? (parseFloat(r.value)||0) : 0; }catch(e){ approvalThreshold = 0; }
+  try{ const r = await window.storage.get('recurAutoApplied', true); recurAutoApplied = r ? JSON.parse(r.value) : []; }catch(e){ recurAutoApplied = []; }
+
+  await autoApplyRecurring();
+
+  $('nameA').value = names.a; $('nameB').value = names.b;
+  $('approvalThreshold').value = approvalThreshold || '';
+  updatePayerButtons();
+  renderKidsChips(); renderKidSelects();
+  renderCatChips(); renderCatSelects();
+  renderWhoSelects();
+  renderWeekdaySetter();
+  renderCalendar();
+  renderOverridesList();
+  renderVacationsList();
+  renderHolidaysList();
+  renderEventsList();
+  render();
+}
+async function saveExpenses(){ try{ await window.storage.set('expenses', JSON.stringify(expenses), true); }catch(e){} }
+async function saveApprovalThreshold(){ try{ await window.storage.set('approvalThreshold', String(approvalThreshold), true); }catch(e){} }
+$('approvalThreshold').addEventListener('change', e=>{
+  approvalThreshold = parseFloat(e.target.value) || 0;
+  saveApprovalThreshold();
+  render();
+});
+async function saveNames(){ try{ await window.storage.set('names', JSON.stringify(names), true); }catch(e){} }
+async function saveKids(){ try{ await window.storage.set('kids', JSON.stringify(kids), true); }catch(e){} }
+async function saveCategories(){ try{ await window.storage.set('categories', JSON.stringify(categories), true); }catch(e){} }
+async function savePattern(){ try{ await window.storage.set('weeklyPattern', JSON.stringify(weeklyPattern), true); }catch(e){} }
+async function saveOverrides(){ try{ await window.storage.set('overrides', JSON.stringify(overrides), true); }catch(e){} }
+async function saveVacations(){ try{ await window.storage.set('vacations', JSON.stringify(vacations), true); }catch(e){} }
+async function saveHolidays(){ try{ await window.storage.set('holidays', JSON.stringify(holidays), true); }catch(e){} }
+async function saveEvents(){ try{ await window.storage.set('events', JSON.stringify(events), true); }catch(e){} }
+
+function whoLabel(who){
+  if(who==='a') return names.a;
+  if(who==='b') return names.b;
+  return 'משותף';
+}
+function whoColorVar(who){
+  if(who==='a') return 'var(--a-color)';
+  if(who==='b') return 'var(--b-color)';
+  return 'var(--shared-color)';
+}
+function renderWhoSelects(){
+  const opts = `<option value="a">${escapeHtml(names.a)}</option><option value="b">${escapeHtml(names.b)}</option><option value="shared">משותף</option>`;
+  $('ovWho').innerHTML = opts;
+  $('vacWho').innerHTML = opts;
+  $('holWho').innerHTML = opts;
+  $('legA').textContent = names.a;
+  $('legB').textContent = names.b;
+}
+
+$('nameA').addEventListener('change', e=>{ names.a = e.target.value || 'שלי'; saveNames(); updatePayerButtons(); renderWhoSelects(); renderWeekdaySetter(); renderCalendar(); renderOverridesList(); renderVacationsList(); renderHolidaysList(); render(); });
+$('nameB').addEventListener('change', e=>{ names.b = e.target.value || 'שי'; saveNames(); updatePayerButtons(); renderWhoSelects(); renderWeekdaySetter(); renderCalendar(); renderOverridesList(); renderVacationsList(); renderHolidaysList(); render(); });
+
+function updatePayerButtons(){
+  $('btnA').textContent = 'שילם/ה ' + names.a;
+  $('btnB').textContent = 'שילם/ה ' + names.b;
+  $('btnA').className = selectedPayer === 'a' ? 'active-a' : '';
+  $('btnB').className = selectedPayer === 'b' ? 'active-b' : '';
+}
+
+function renderKidsChips(){
+  const box = $('kidsChips');
+  box.innerHTML = kids.length===0
+    ? '<span style="font-size:12px;color:var(--ink-soft)">עדיין לא נוספו</span>'
+    : kids.map((k,i)=>`<span class="kid-chip">${escapeHtml(k)}<button onclick="removeKid(${i})">✕</button></span>`).join('');
+}
+function renderKidSelects(){
+  const opts = kids.map(k=>`<option value="${escapeHtml(k)}">${escapeHtml(k)}</option>`).join('');
+  $('filterKid').innerHTML = '<option value="all">כולם</option>' + opts;
+  $('evtKid').innerHTML = '<option value="">משותף / כללי</option>' + opts;
+  renderKidChecks();
+}
+function renderKidChecks(){
+  const box = $('kidChecks');
+  if(kids.length===0){
+    box.innerHTML = '<span class="empty-hint">הוסיפו ילדים למעלה כדי לבחור כאן — ריק = משותף/כללי</span>';
+    return;
+  }
+  box.innerHTML = kids.map((k,i)=>`
+    <label class="kid-check" data-i="${i}">
+      <input type="checkbox" value="${escapeHtml(k)}">
+      <span>${escapeHtml(k)}</span>
+    </label>`).join('');
+  box.querySelectorAll('.kid-check').forEach(lbl=>{
+    const cb = lbl.querySelector('input');
+    cb.addEventListener('change', ()=> lbl.classList.toggle('checked', cb.checked));
+  });
+}
+function getCheckedKids(){
+  return Array.from(document.querySelectorAll('#kidChecks input:checked')).map(cb=>cb.value);
+}
+function clearKidChecks(){
+  document.querySelectorAll('#kidChecks .kid-check').forEach(lbl=>{
+    lbl.classList.remove('checked');
+    lbl.querySelector('input').checked = false;
+  });
+}
+async function removeKid(i){ kids.splice(i,1); await saveKids(); renderKidsChips(); renderKidSelects(); render(); }
+$('kidAddBtn').addEventListener('click', async ()=>{
+  const v = $('kidInput').value.trim();
+  if(!v || kids.includes(v)){ $('kidInput').value=''; return; }
+  kids.push(v); await saveKids(); $('kidInput').value='';
+  renderKidsChips(); renderKidSelects();
+});
+$('kidInput').addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); $('kidAddBtn').click(); } });
+
+function renderCatChips(){
+  const box = $('catChips');
+  box.innerHTML = categories.map((c,i)=>{
+    const delBtn = c==='אחר' ? '' : `<button onclick="removeCategory(${i})">✕</button>`;
+    const style = getCategoryStyle(c);
+    return `<span class="kid-chip cat-chip-styled" style="${style}">${escapeHtml(c)}${delBtn}</span>`;
+  }).join('');
+}
+function renderCatSelects(){
+  const opts = categories.map(c=>`<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+  const prevCategory = $('category').value;
+  const prevFilter = $('filterCat').value;
+  $('category').innerHTML = opts;
+  if(categories.includes(prevCategory)) $('category').value = prevCategory;
+  else $('category').value = categories.includes('אחר') ? 'אחר' : categories[0];
+  $('filterCat').innerHTML = '<option value="all">כל הקטגוריות</option>' + opts;
+  if(prevFilter) $('filterCat').value = prevFilter;
+}
+async function removeCategory(i){
+  categories.splice(i,1);
+  await saveCategories();
+  renderCatChips(); renderCatSelects();
+}
+$('catAddBtn').addEventListener('click', async ()=>{
+  const v = $('catInput').value.trim();
+  if(!v || categories.includes(v)){ $('catInput').value=''; return; }
+  categories.splice(categories.length-1, 0, v);
+  await saveCategories(); $('catInput').value='';
+  renderCatChips(); renderCatSelects();
+});
+$('catInput').addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); $('catAddBtn').click(); } });
+
+$('btnA').addEventListener('click', ()=>{ selectedPayer='a'; updatePayerButtons(); updateSplitPreview(); });
+$('btnB').addEventListener('click', ()=>{ selectedPayer='b'; updatePayerButtons(); updateSplitPreview(); });
+$('ratio').addEventListener('input', e=>{ $('ratioLabel').textContent = e.target.value+'% / '+(100-e.target.value)+'%'; updateSplitPreview(); });
+$('amount').addEventListener('input', updateSplitPreview);
+$('ratioToggleBtn').addEventListener('click', ()=>{
+  const sec = $('ratioSection');
+  const opening = sec.style.display === 'none';
+  sec.style.display = opening ? 'block' : 'none';
+  if(!opening){ $('ratio').value = 50; $('ratioLabel').textContent = '50% / 50%'; }
+  updateSplitPreview();
+});
+
+function effectiveRatioA(){
+  return $('ratioSection').style.display === 'none' ? 50 : parseInt($('ratio').value);
+}
+function updateSplitPreview(){
+  const amount = parseFloat($('amount').value) || 0;
+  const ratioA = effectiveRatioA();
+  const shareA = amount * ratioA/100, shareB = amount - shareA;
+  const payer = selectedPayer;
+  const owed = payer==='a' ? shareB : shareA;
+  const ower = payer==='a' ? names.b : names.a;
+  const payerName = payer==='a' ? names.a : names.b;
+  $('splitPreview').textContent = amount<=0
+    ? `חלק ${names.a}: ${fmt(shareA)} · חלק ${names.b}: ${fmt(shareB)}`
+    : `${payerName} שילם/ה ${fmt(amount)} · ${ower} צריך/ה להחזיר ${fmt(owed)}`;
+}
+$('date').valueAsDate = new Date();
+updateSplitPreview();
+
+let pendingReceiptOCR = null;
+function handleReceiptFile(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    const img = new Image();
+    img.onload = ()=>{
+      const maxW = 900, scale = Math.min(1, maxW/img.width);
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width*scale; canvas.height = img.height*scale;
+      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+      pendingReceipt = canvas.toDataURL('image/jpeg', 0.72);
+
+      const ocrMaxW = 1600, ocrScale = Math.min(1, ocrMaxW/img.width);
+      const ocrCanvas = document.createElement('canvas');
+      ocrCanvas.width = img.width*ocrScale; ocrCanvas.height = img.height*ocrScale;
+      const octx = ocrCanvas.getContext('2d');
+      octx.drawImage(img,0,0,ocrCanvas.width,ocrCanvas.height);
+      const idata = octx.getImageData(0,0,ocrCanvas.width,ocrCanvas.height);
+      const d = idata.data;
+      for(let i=0;i<d.length;i+=4){
+        const gray = 0.299*d[i] + 0.587*d[i+1] + 0.114*d[i+2];
+        const contrasted = Math.min(255, Math.max(0, (gray-128)*1.4+128));
+        d[i]=d[i+1]=d[i+2]=contrasted;
+      }
+      octx.putImageData(idata,0,0);
+      pendingReceiptOCR = ocrCanvas.toDataURL('image/jpeg', 0.9);
+
+      $('receiptRow').style.display='flex';
+      $('receiptPreview').src = pendingReceipt;
+      $('receiptPreview').style.display='block';
+      $('receiptLbl').textContent = 'קבלה מצורפת';
+      $('clearReceipt').style.display='inline-block';
+      $('ocrBtn').style.display='block';
+      $('ocrStatus').innerHTML='';
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+$('receiptInput').addEventListener('change', e=> handleReceiptFile(e.target.files[0]));
+$('receiptCamera').addEventListener('change', e=> handleReceiptFile(e.target.files[0]));
+$('clearReceipt').addEventListener('click', ()=>{
+  pendingReceipt = null; pendingReceiptOCR = null; $('receiptInput').value = ''; $('receiptCamera').value = '';
+  $('receiptPreview').style.display='none';
+  $('receiptRow').style.display='none';
+  $('clearReceipt').style.display='none';
+  $('ocrBtn').style.display='none';
+  $('ocrStatus').innerHTML='';
+});
+
+let tesseractLoaded = false;
+function loadTesseract(){
+  return new Promise((resolve, reject)=>{
+    if(window.Tesseract){ tesseractLoaded = true; resolve(); return; }
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+    s.onload = ()=>{ tesseractLoaded = true; resolve(); };
+    s.onerror = ()=> reject(new Error('טעינת מנוע הזיהוי נכשלה'));
+    document.head.appendChild(s);
+  });
+}
+function guessAmountFromText(text){
+  const lines = text.split('\n');
+  const decimalRe = /\d{1,4}[.,]\d{2}(?!\d)/g;
+  const keywordRe = /(סה"?כ|סהכ|לתשלום|לתשלום בכרטיס|כרטיסי אשראי|total|amount due|to pay)/i;
+  let bestFromKeyword = null, lastDecimal = null;
+  for(const line of lines){
+    const matches = line.match(decimalRe);
+    if(!matches) continue;
+    for(const raw of matches){
+      const val = parseFloat(raw.replace(',','.'));
+      if(isNaN(val) || val<=0 || val>50000) continue;
+      if(keywordRe.test(line)) bestFromKeyword = val;
+      lastDecimal = val;
+    }
+  }
+  if(bestFromKeyword!==null) return bestFromKeyword;
+  if(lastDecimal!==null) return lastDecimal;
+  return null;
+}
+function guessDescFromText(text){
+  const lines = text.split('\n').map(l=>l.trim()).filter(Boolean);
+  for(const line of lines){
+    const hebrewLetters = (line.match(/[א-ת]/g)||[]).length;
+    const totalLetters = (line.match(/[א-תA-Za-z]/g)||[]).length;
+    const totalChars = line.replace(/\s/g,'').length;
+    if(totalChars===0) continue;
+    const hasRepeatedNoise = /(.)\1{2,}/.test(line);
+    if(hasRepeatedNoise) continue;
+    const looksReal = hebrewLetters>=5 || (totalLetters>=6 && totalLetters/totalChars>0.75);
+    if(looksReal) return line.slice(0,40);
+  }
+  return '';
+}
+function guessCategoryFromText(text){
+  const t = text.toLowerCase();
+  const rules = [
+    { cat:'בריאות', kws:['רופא','מרפאה','בית מרקחת','קופת חולים','pharmacy','clinic','דוקטור','שיניים'] },
+    { cat:'חינוך', kws:['ספר','ספרים','לימוד','בית ספר','גן ילדים','school','stationery','משרד לימוד'] },
+    { cat:'חוגים', kws:['חוג','חוגים','קייטנה','מתנס','matnas','קורס','אימון'] },
+    { cat:'ביגוד', kws:['ביגוד','בגדים','נעליים','fashion','kids wear','fox','castro','zara','h&m'] },
+    { cat:'פנאי', kws:['קולנוע','משחקים','פארק','אטרקציה','cinema','park','toys','טויז'] },
+    { cat:'מזון', kws:['סופר','מרקט','מכולת','מסעדה','restaurant','supermarket','שופרסל','רמי לוי','ויקטורי'] },
+  ];
+  for(const rule of rules){
+    if(rule.kws.some(kw=> t.includes(kw))) return rule.cat;
+  }
+  return null;
+}
+async function recognizeReceiptText(){
+  if(window.RECEIPT_OCR_FUNCTION_URL){
+    const resp = await fetch(window.RECEIPT_OCR_FUNCTION_URL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ imageBase64: pendingReceiptOCR })
+    });
+    if(!resp.ok) throw new Error('Cloud Function returned ' + resp.status);
+    const data = await resp.json();
+    if(data.error) throw new Error(data.error);
+    return data.text || '';
+  }
+  await loadTesseract();
+  const result = await window.Tesseract.recognize(pendingReceiptOCR, 'heb+eng');
+  return result.data.text || '';
+}
+
+$('ocrBtn').addEventListener('click', async ()=>{
+  if(!pendingReceiptOCR) return;
+  const btn = $('ocrBtn'), status = $('ocrStatus');
+  const usingCloud = !!window.RECEIPT_OCR_FUNCTION_URL;
+  btn.disabled = true;
+  status.textContent = usingCloud ? 'שולח לזיהוי (Google Cloud Vision)...'
+    : (tesseractLoaded ? 'מזהה טקסט מהתמונה...' : 'טוען מנוע זיהוי (פעם ראשונה בלבד)...');
+  try{
+    const text = await recognizeReceiptText();
+    const amount = guessAmountFromText(text);
+    const desc = guessDescFromText(text);
+    const category = guessCategoryFromText(text);
+    if(amount===null && !desc){
+      status.textContent = 'לא הצלחתי לזהות סכום או תיאור ברור — נא למלא ידנית';
+    } else {
+      let html = '<div style="margin-bottom:4px;">נמצא — בדקו לפני אישור:</div>';
+      if(amount!==null) html += `<button type="button" class="ocr-suggest" data-apply="amount" data-val="${amount}">✓ סכום: ${fmt(amount)}</button>`;
+      if(desc) html += `<button type="button" class="ocr-suggest" data-apply="desc" data-val="${escapeHtml(desc)}">✓ תיאור: ${escapeHtml(desc)}</button>`;
+      if(category) html += `<button type="button" class="ocr-suggest" data-apply="category" data-val="${escapeHtml(category)}">✓ קטגוריה: ${escapeHtml(category)}</button>`;
+      status.innerHTML = html;
+    }
+  }catch(err){
+    console.error(err);
+    status.textContent = 'הזיהוי נכשל — נא למלא ידנית';
+  }finally{
+    btn.disabled = false;
+  }
+});
+$('ocrStatus').addEventListener('click', e=>{
+  const btn = e.target.closest('.ocr-suggest');
+  if(!btn) return;
+  if(btn.dataset.apply==='amount'){ $('amount').value = btn.dataset.val; updateSplitPreview(); }
+  if(btn.dataset.apply==='desc'){ $('desc').value = btn.dataset.val; }
+  if(btn.dataset.apply==='category'){ $('category').value = btn.dataset.val; }
+  btn.classList.add('applied');
+  btn.disabled = true;
+});
+
+$('recurCheck').addEventListener('change', e=>{
+  $('recurUntilRow').style.display = e.target.checked ? 'block' : 'none';
+  if(!e.target.checked) $('recurUntil').value = '';
+});
+
+$('addBtn').addEventListener('click', async ()=>{
+  const desc = $('desc').value.trim();
+  const amount = parseFloat($('amount').value);
+  const date = $('date').value;
+  const category = $('category').value;
+  const children = getCheckedKids();
+  const notes = $('notes').value.trim();
+  const ratioA = effectiveRatioA();
+  const recurring = $('recurCheck').checked;
+  const recurUntil = recurring ? ($('recurUntil').value || null) : null;
+  if(!desc || !amount || amount<=0 || !date){ alert('נא למלא עבור מה, סכום ותאריך תקינים'); return; }
+  const id = Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  const status = (approvalThreshold > 0 && amount >= approvalThreshold) ? 'pending' : 'approved';
+  expenses.push({ id, desc, amount, date, category, children, notes, paidBy: selectedPayer, ratioA, hasReceipt: !!pendingReceipt, recurring, recurUntil, status });
+  if(pendingReceipt){ try{ await window.storage.set('receipt:'+id, pendingReceipt, true); }catch(e){} }
+  await saveExpenses();
+  $('desc').value=''; $('amount').value=''; $('ratio').value=50; $('notes').value='';
+  $('ratioLabel').textContent='50% / 50%'; $('ratioSection').style.display='none'; clearKidChecks();
+  $('recurCheck').checked=false; $('recurUntilRow').style.display='none'; $('recurUntil').value='';
+  $('clearReceipt').click(); updateSplitPreview(); render();
+  if(status==='pending'){ alert('הסכום עובר את סף האישור — ההוצאה נכנסה כ"ממתין לאישור" ותיכלל במאזן רק אחרי אישור.'); }
+});
+
+$('filterCat').addEventListener('change', render);
+$('filterKid').addEventListener('change', render);
+$('searchText').addEventListener('input', render);
+
+$('settleBtn').addEventListener('click', async ()=>{
+  if(expenses.length===0) return;
+  if(!confirm('פעולה זו תמחק את כל ההיסטוריה (כולל קבלות) ותאפס את היתרה. להמשיך?')) return;
+  for(const e of expenses){ if(e.hasReceipt){ try{ await window.storage.delete('receipt:'+e.id, true); }catch(err){} } }
+  expenses = []; await saveExpenses(); render();
+});
+
+async function deleteExpense(id){
+  const e = expenses.find(x=>x.id===id);
+  if(e && e.hasReceipt){ try{ await window.storage.delete('receipt:'+id, true); }catch(err){} }
+  expenses = expenses.filter(e=>e.id!==id);
+  await saveExpenses(); render();
+}
+async function updateExpenseCategory(id, newCategory){
+  const e = expenses.find(x=>x.id===id);
+  if(!e || e.category===newCategory) return;
+  e.category = newCategory;
+  await saveExpenses();
+  render();
+}
+async function updateExpensePayer(id, newPayer){
+  const e = expenses.find(x=>x.id===id);
+  if(!e || e.paidBy===newPayer) return;
+  e.paidBy = newPayer;
+  await saveExpenses();
+  render();
+}
+$('list').addEventListener('change', e=>{
+  const catSel = e.target.closest('.cat-edit-select');
+  if(catSel){ updateExpenseCategory(catSel.dataset.id, catSel.value); return; }
+  const paySel = e.target.closest('.payer-edit-select');
+  if(paySel){ updateExpensePayer(paySel.dataset.id, paySel.value); return; }
+});
+function toggleEditRow(id){
+  const row = document.getElementById('editRow-'+id);
+  if(!row) return;
+  row.style.display = row.style.display==='none' ? 'flex' : 'none';
+}
+async function saveExpenseEdit(id){
+  const e = expenses.find(x=>x.id===id);
+  if(!e) return;
+  const row = document.getElementById('editRow-'+id);
+  const desc = row.querySelector('.edit-desc').value.trim();
+  const amount = parseFloat(row.querySelector('.edit-amount').value);
+  const date = row.querySelector('.edit-date').value;
+  if(!desc || !amount || amount<=0 || !date){ alert('נא למלא תיאור, סכום ותאריך תקינים'); return; }
+  e.desc = desc; e.amount = amount; e.date = date;
+  await saveExpenses();
+  render();
+}
+$('list').addEventListener('click', e=>{
+  const saveBtn = e.target.closest('.edit-save-btn');
+  if(saveBtn){ saveExpenseEdit(saveBtn.dataset.id); return; }
+  const cancelBtn = e.target.closest('.edit-cancel-btn');
+  if(cancelBtn){ toggleEditRow(cancelBtn.dataset.id); return; }
+});
+async function fixRatioTo50(id){
+  const e = expenses.find(x=>x.id===id);
+  if(!e) return;
+  e.ratioA = 50;
+  await saveExpenses();
+  render();
+}
+
+async function duplicateExpense(id){
+  const src = expenses.find(x=>x.id===id);
+  if(!src) return;
+  if(src.recurUntil && todayStr() > src.recurUntil){
+    if(!confirm(`ההוצאה החוזרת הזו הוגדרה עד ${src.recurUntil}, שכבר עבר. להוסיף בכל זאת הפעם?`)) return;
+  }
+  const newId = Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  const status = (approvalThreshold > 0 && src.amount >= approvalThreshold) ? 'pending' : 'approved';
+  const copy = { ...src, id: newId, date: todayStr(), status };
+  expenses.push(copy);
+  await saveExpenses();
+  render();
+}
+
+function lastDayOfMonth(year, month1to12){ return new Date(year, month1to12, 0).getDate(); }
+async function duplicateExpenseToMonth(id, monthStr){
+  const src = expenses.find(x=>x.id===id);
+  if(!src || !monthStr) return;
+  const [y, m] = monthStr.split('-').map(Number);
+  const origDay = parseInt(src.date.slice(8,10), 10) || 1;
+  const day = Math.min(origDay, lastDayOfMonth(y, m));
+  const newDate = `${y}-${String(m).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+  const newId = Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  const status = (approvalThreshold > 0 && src.amount >= approvalThreshold) ? 'pending' : 'approved';
+  const copy = { ...src, id: newId, date: newDate, status };
+  expenses.push(copy);
+  await saveExpenses();
+  render();
+}
+$('list').addEventListener('click', e=>{
+  const btn = e.target.closest('.dup-month-btn');
+  if(!btn) return;
+  const row = btn.closest('.dup-month-row');
+  const input = row.querySelector('.dup-month-input');
+  if(!input.value){ alert('נא לבחור חודש קודם'); return; }
+  duplicateExpenseToMonth(btn.dataset.id, input.value);
+});
+
+let recurAutoApplied = [];
+let justAutoAdded = [];
+async function saveRecurAutoApplied(){ try{ await window.storage.set('recurAutoApplied', JSON.stringify(recurAutoApplied), true); }catch(e){} }
+
+async function fillMissingRecurringMonths(){
+  const today = todayStr();
+  const nowMonth = today.slice(0,7);
+  const seriesMap = {};
+  expenses.filter(e=>e.recurring).forEach(e=>{
+    const key = e.desc.trim().toLowerCase();
+    if(!seriesMap[key]) seriesMap[key] = [];
+    seriesMap[key].push(e);
+  });
+  let changed = false;
+  justAutoAdded = [];
+  for(const key in seriesMap){
+    const entries = seriesMap[key];
+    const latest = entries.reduce((a,b)=> a.date>b.date ? a : b);
+    const earliestMonth = entries.reduce((a,b)=> a.date<b.date ? a : b).date.slice(0,7);
+    const existingMonths = new Set(entries.map(e=>e.date.slice(0,7)));
+    const endMonth = latest.recurUntil ? latest.recurUntil.slice(0,7) : nowMonth;
+    const limitMonth = endMonth < nowMonth ? endMonth : nowMonth;
+    let [y, m] = earliestMonth.split('-').map(Number);
+    let guard = 0;
+    while(guard++ < 600){
+      const ym = `${y}-${String(m).padStart(2,'0')}`;
+      if(ym > limitMonth) break;
+      if(!existingMonths.has(ym)){
+        const appliedKey = ym + '::' + key;
+        if(!recurAutoApplied.includes(appliedKey)){
+          const day = Math.min(parseInt(latest.date.slice(8,10),10) || 1, lastDayOfMonth(y, m));
+          const newDate = `${ym}-${String(day).padStart(2,'0')}`;
+          const newId = Date.now().toString(36)+Math.random().toString(36).slice(2,6)+Math.floor(Math.random()*1000);
+          const status = (approvalThreshold > 0 && latest.amount >= approvalThreshold) ? 'pending' : 'approved';
+          const copy = { ...latest, id: newId, date: newDate, status, approvedBy: undefined, approvedAt: undefined };
+          expenses.push(copy);
+          existingMonths.add(ym);
+          recurAutoApplied.push(appliedKey);
+          justAutoAdded.push(copy);
+          changed = true;
+        }
+      }
+      m++; if(m>12){ m=1; y++; }
+    }
+  }
+  if(changed){ await saveExpenses(); await saveRecurAutoApplied(); }
+  return changed;
+}
+async function autoApplyRecurring(){ await fillMissingRecurringMonths(); }
+
+async function backfillRecurring(id){
+  const src = expenses.find(x=>x.id===id);
+  if(!src) return;
+  const before = expenses.length;
+  const changed = await fillMissingRecurringMonths();
+  const added = expenses.length - before;
+  if(added > 0){
+    alert(`נוספו ${added} חודשים חסרים עבור "${src.desc}".`);
+  } else {
+    alert('אין חודשים חסרים למלא — הכל כבר קיים.');
+  }
+  render();
+}
+
+function renderRecurBanner(){
+  const box = $('recurBanner');
+  if(justAutoAdded.length===0){ box.innerHTML=''; return; }
+  box.innerHTML = `<div class="recur-banner">
+    <div class="rb-title">🔁 הוצאות חוזרות שנוספו אוטומטית החודש</div>
+    ${justAutoAdded.map(e=>`<div class="rb-item"><span>${escapeHtml(e.desc)} · ${fmt(e.amount)}</span><button onclick="deleteExpense('${e.id}')">מחיקה אם לא רלוונטי</button></div>`).join('')}
+  </div>`;
+}
+
+async function viewReceipt(id){
+  try{ const r = await window.storage.get('receipt:'+id, true); if(r){ $('modalImg').src = r.value; $('modalBg').classList.add('open'); } }
+  catch(e){ alert('לא ניתן לטעון את הקבלה'); }
+}
+$('modalClose').addEventListener('click', ()=> $('modalBg').classList.remove('open'));
+$('modalBg').addEventListener('click', e=>{ if(e.target.id==='modalBg') $('modalBg').classList.remove('open'); });
+
+function computeBalance(){
+  let net = 0;
+  expenses.forEach(e=>{
+    if(e.status === 'pending') return;
+    const shareA = e.amount * (e.ratioA/100), shareB = e.amount - shareA;
+    if(e.paidBy==='a'){ net += shareB; } else { net -= shareA; }
+  });
+  return net;
+}
+function updateScale(){
+  const net = computeBalance();
+  const maxTilt = 14;
+  let tilt = net>0 ? -Math.min(maxTilt, 4+Math.log(1+Math.abs(net))*2.4) : net<0 ? Math.min(maxTilt, 4+Math.log(1+Math.abs(net))*2.4) : 0;
+  ['beamGroup','panA','panB'].forEach(id=>{
+    document.getElementById(id).style.transform = `rotate(${tilt}deg)`;
+    document.getElementById(id).style.transformOrigin = '200px 70px';
+  });
+  $('labelA').textContent = names.a; $('labelB').textContent = names.b;
+  const verdict = $('verdict');
+  const shareBtn = $('shareBtn');
+  if(Math.abs(net) < 0.01){
+    verdict.innerHTML = 'המאזן מאוזן ✓';
+    shareBtn.style.display = 'none';
+    $('shareHint').textContent = '';
+  }
+  else if(net > 0){
+    verdict.innerHTML = `<span style="color:var(--b-color)">${escapeHtml(names.b)}</span> חייב/ת ל<span style="color:var(--a-color)">${escapeHtml(names.a)}</span> <span class="amt">${fmt(net)}</span>`;
+    shareBtn.style.display = 'inline-block';
+    $('shareHint').textContent = `שולח בקשה ל${names.b} — פותח את חלון השיתוף של הנייד כדי לבחור Bit / PayBox / וואטסאפ`;
+  } else {
+    verdict.innerHTML = `<span style="color:var(--a-color)">${escapeHtml(names.a)}</span> חייב/ת ל<span style="color:var(--b-color)">${escapeHtml(names.b)}</span> <span class="amt">${fmt(-net)}</span>`;
+    shareBtn.style.display = 'inline-block';
+    $('shareHint').textContent = `שולח בקשה ל${names.a} — פותח את חלון השיתוף של הנייד כדי לבחור Bit / PayBox / וואטסאפ`;
+  }
+}
+
+async function shareSettlement(){
+  const net = computeBalance();
+  if(Math.abs(net) < 0.01) return;
+  const oweAmount = fmt(Math.abs(net));
+  const payerSide = net > 0 ? names.b : names.a;
+  const receiverSide = net > 0 ? names.a : names.b;
+  const text = `היי ${payerSide}, לפי מאזן ההוצאות המשותפות שלנו — צריך להעביר ל${receiverSide} ${oweAmount}. אפשר בביט או בפייבוקס 🙂`;
+  if(navigator.share){
+    try{ await navigator.share({ text }); return; }catch(e){}
+  }
+  try{
+    await navigator.clipboard.writeText(text);
+    alert('הטקסט הועתק! אפשר להדביק אותו בהודעה בביט, בפייבוקס או בוואטסאפ.');
+  }catch(e){
+    prompt('העתיקו את הטקסט הבא ושלחו בביט/פייבוקס:', text);
+  }
+}
+$('shareBtn').addEventListener('click', shareSettlement);
+
+async function approveExpense(id, approverSide){
+  const e = expenses.find(x=>x.id===id);
+  if(!e) return;
+  const payerName = e.paidBy==='a' ? names.a : names.b;
+  const ok = confirm(`לאשר את "${e.desc}" (${fmt(e.amount)})?\nשולם/ה על ידי: ${payerName}\n\nאם זה לא נכון, בטלו כאן ותקנו קודם את "מי שילם" בכרטיס ההוצאה.`);
+  if(!ok) return;
+  e.status = 'approved';
+  e.approvedBy = approverSide;
+  e.approvedAt = todayStr();
+  await saveExpenses();
+  render();
+}
+async function rejectExpense(id){
+  if(!confirm('דחיית ההוצאה תמחק אותה לחלוטין. להמשיך?')) return;
+  await deleteExpense(id);
+}
+function renderPendingApproval(){
+  const box = $('pendingApproval');
+  const pending = expenses.filter(e=>e.status==='pending').sort((a,b)=> b.date.localeCompare(a.date));
+  if(pending.length===0){ box.innerHTML=''; return; }
+  box.innerHTML = `<div class="pending-banner">
+    <div class="pb-title">⏳ הוצאות ממתינות לאישור (${pending.length})</div>
+    ${pending.map(e=>{
+      const payerName = e.paidBy==='a' ? names.a : names.b;
+      return `<div class="pb-item">
+        <div class="pb-desc">${escapeHtml(e.desc)} ·${fmt(e.amount)}</div>
+        <div class="pb-meta">${e.date} · שולם/ה ${escapeHtml(payerName)} ·${escapeHtml(e.category)}</div>
+        <div class="pb-actions">
+          <button class="pb-approve" onclick="approveExpense('${e.id}','a')">✓ ${escapeHtml(names.a)} מאשר/ת</button>
+          <button class="pb-approve" onclick="approveExpense('${e.id}','b')">✓ ${escapeHtml(names.b)} מאשר/ת</button>
+        </div>
+        <div class="pb-actions" style="margin-top:6px;">
+          <button class="pb-reject" onclick="rejectExpense('${e.id}')">✕ דחייה</button>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+function expenseKids(e){
+  if(Array.isArray(e.children)) return e.children;
+  if(e.child) return [e.child];
+  return [];
+}
+
+function renderExpenseCard(e, extraOweHtml){
+    const payerName = e.paidBy==='a' ? names.a : names.b;
+    const owerName = e.paidBy==='a' ? names.b : names.a;
+    const color = e.paidBy==='a' ? 'var(--a-color)' : 'var(--b-color)';
+    const ratioTxt = e.ratioA===50 ? '' : ` · חלוקה ${e.ratioA}/${100-e.ratioA}`;
+    const fixRatioBtn = e.ratioA!==50 ? `<span class="fix-ratio-btn" onclick="fixRatioTo50('${e.id}')">🔧 תיקון ל-50/50</span>` : '';
+    const shareA = e.amount*(e.ratioA/100);
+    const owed = e.paidBy==='a' ? (e.amount-shareA) : shareA;
+    const childTag = expenseKids(e).map(k=>`<span class="child-tag">${escapeHtml(k)}</span>`).join('');
+    const recurTag = e.recurring ? `<span class="recur-tag">🔁 חוזר${e.recurUntil?' עד '+e.recurUntil:''}</span>` : '';
+    const approvedTag = e.approvedBy ? `<span class="recur-tag">✓ אושר ע"י ${escapeHtml(e.approvedBy==='a'?names.a:names.b)}</span>` : '';
+    const dupBtn = e.recurring ? `<span class="dup-btn" onclick="duplicateExpense('${e.id}')">⎘ הוספה לחודש הזה</span>` : '';
+    const backfillBtn = e.recurring ? `<span class="dup-btn" onclick="backfillRecurring('${e.id}')">🔁 מילוי חודשים חסרים</span>` : '';
+    const dupToMonthRow = e.recurring ? `<div class="dup-month-row">
+        <input type="month" class="dup-month-input" data-id="${e.id}">
+        <button type="button" class="dup-month-btn" data-id="${e.id}">שכפול לחודש שנבחר</button>
+      </div>` : '';
+    const receiptBtn = e.hasReceipt ? `<span class="receipt-link" onclick="viewReceipt('${e.id}')">📎 קבלה</span>` : '';
+    const notesHtml = e.notes ? `<div class="notes">${escapeHtml(e.notes)}</div>` : '';
+    
+    const catStyle = getCategoryStyle(e.category);
+    const catBadgeHtml = `<select class="cat-edit-select cat-badge" style="${catStyle}" data-id="${e.id}">${categories.map(c=>`<option value="${escapeHtml(c)}"${c===e.category?' selected':''}>${escapeHtml(c)}</option>`).join('')}</select>`;
+
+    const editRow = `<div class="edit-row" id="editRow-${e.id}" style="display:none;">
+        <input type="text" class="edit-desc" data-id="${e.id}" value="${escapeHtml(e.desc)}" placeholder="תיאור">
+        <input type="number" class="edit-amount" data-id="${e.id}" value="${e.amount}" placeholder="סכום">
+        <input type="date" class="edit-date" data-id="${e.id}" value="${e.date}">
+        <div class="edit-actions">
+          <button type="button" class="edit-save-btn" data-id="${e.id}">שמירה</button>
+          <button type="button" class="edit-cancel-btn" data-id="${e.id}">ביטול</button>
+        </div>
+      </div>`;
+    return `<div class="expense">
+      <div class="expense-top">
+        <span class="who-dot" style="background:${color}"></span>
+        <div class="info"><div class="desc">${escapeHtml(e.desc)}</div><div class="meta">${e.date} · ${catBadgeHtml}${ratioTxt} ${childTag} ${recurTag} ${approvedTag}</div></div>
+        <div class="amt">${fmt(e.amount)}</div>
+        <button class="edit-toggle-btn" onclick="toggleEditRow('${e.id}')" title="עריכה">✎</button>
+        <button class="del" onclick="deleteExpense('${e.id}')" title="מחיקה">✕</button>
+      </div>
+      <div class="owe-line"><span>שילם/ה <select class="payer-edit-select" data-id="${e.id}"><option value="a"${e.paidBy==='a'?' selected':''}>${escapeHtml(names.a)}</option><option value="b"${e.paidBy==='b'?' selected':''}>${escapeHtml(names.b)}</option></select> · ${escapeHtml(owerName)} מחזיר/ה <b>${fmt(owed)}</b></span>${receiptBtn}${dupBtn}${backfillBtn}${fixRatioBtn}${extraOweHtml||''}</div>
+      ${editRow}
+      ${dupToMonthRow}
+      ${notesHtml}
+    </div>`;
+}
+function renderSeriesSummaryCard(latest, info, key){
+  const payerName = latest.paidBy==='a' ? names.a : names.b;
+  const color = latest.paidBy==='a' ? 'var(--a-color)' : 'var(--b-color)';
+  const childTag = expenseKids(latest).map(k=>`<span class="child-tag">${escapeHtml(k)}</span>`).join('');
+  return `<div class="expense">
+    <div class="expense-top">
+      <span class="who-dot" style="background:${color}"></span>
+      <div class="info">
+        <div class="desc">🔁 ${escapeHtml(latest.desc)}</div>
+        <div class="meta"><span class="cat-badge" style="${getCategoryStyle(latest.category)}">${escapeHtml(latest.category)}</span> ${childTag} · ${info.count} מופעים · סה"כ ${fmt(info.total)}</div>
+      </div>
+      <div class="amt">${fmt(latest.amount)}</div>
+    </div>
+    <div class="owe-line">
+      <span>שולם/ה ע"י ${escapeHtml(payerName)} · אחרון: ${latest.date}</span>
+      <span class="dup-btn series-expand-btn" data-key="${escapeHtml(key)}">▾ הצג את כל ${info.count} המופעים</span>
+    </div>
+  </div>`;
+}
+let expandedSeries = new Set();
+function toggleSeriesExpand(key){
+  if(expandedSeries.has(key)) expandedSeries.delete(key); else expandedSeries.add(key);
+  render();
+}
+$('list').addEventListener('click', e=>{
+  const btn = e.target.closest('.series-expand-btn, .series-collapse-btn');
+  if(!btn) return;
+  toggleSeriesExpand(btn.dataset.key);
+});
+
+function render(){
+  updateScale();
+  renderRecurBanner();
+  renderPendingApproval();
+  const filterCat = $('filterCat').value, filterKid =$('filterKid').value;
+  const searchQ = $('searchText').value.trim().toLowerCase();
+  const list = $('list');
+  let filtered = [...expenses].filter(e=>e.status!=='pending').sort((a,b)=> b.date.localeCompare(a.date));
+  if(filterCat!=='all') filtered = filtered.filter(e=>e.category===filterCat);
+  if(filterKid!=='all') filtered = filtered.filter(e=>expenseKids(e).includes(filterKid));
+  if(filterMonth) filtered = filtered.filter(e=> e.date.slice(0,7)===filterMonth);
+  if(searchQ) filtered = filtered.filter(e=> e.desc.toLowerCase().includes(searchQ) || (e.notes||'').toLowerCase().includes(searchQ));
+
+  const seriesInfo = {};
+  filtered.forEach(e=>{
+    if(!e.recurring) return;
+    const key = e.desc.trim().toLowerCase();
+    if(!seriesInfo[key]) seriesInfo[key] = { count:0, total:0, items:[] };
+    seriesInfo[key].count++;
+    seriesInfo[key].total += e.amount;
+    seriesInfo[key].items.push(e);
+  });
+  const seriesSeen = new Set();
+  const htmlParts = [];
+  filtered.forEach(e=>{
+    if(e.recurring){
+      const key = e.desc.trim().toLowerCase();
+      if(seriesSeen.has(key)) return;
+      seriesSeen.add(key);
+      const info = seriesInfo[key];
+      if(expandedSeries.has(key)){
+        htmlParts.push(`<span class="dup-btn series-collapse-btn" data-key="${escapeHtml(key)}" style="display:block;text-align:center;margin-bottom:8px;">▴ כווץ בחזרה</span>`);
+        info.items.forEach(item=> htmlParts.push(renderExpenseCard(item)));
+      } else {
+        htmlParts.push(renderSeriesSummaryCard(info.items[0], info, key));
+      }
+      return;
+    }
+    htmlParts.push(renderExpenseCard(e));
+  });
+  list.innerHTML = filtered.length===0 ? '<div class="empty">אין הוצאות להצגה.</div>' : htmlParts.join('');
+
+  let totalA=0, totalB=0;
+  expenses.filter(e=>e.status!=='pending').forEach(e=>{ if(e.paidBy==='a') totalA+=e.amount; else totalB+=e.amount; });
+  $('totals').innerHTML = `
+    <div class="t" style="background:var(--a-tint);color:var(--a-color)">שילם/ה ${escapeHtml(names.a)}<b>${fmt(totalA)}</b></div>
+    <div class="t" style="background:var(--b-tint);color:var(--b-color)">שילם/ה ${escapeHtml(names.b)}<b>${fmt(totalB)}</b></div>
+    <div class="t" style="background:var(--shared-tint);color:var(--shared-color)">סה"כ הוצאות<b>${fmt(totalA+totalB)}</b></div>`;
+
+  $('monthFilterChip').innerHTML = filterMonth
+    ? `<span class="month-filter-chip">מציג רק ${escapeHtml(monthLabel(filterMonth))}<button onclick="clearMonthFilter()">✕</button></span>`
+    : '';
+
+  lastFiltered = filtered;
+  renderMonthlyBreakdown();
+}
+
+function monthLabel(ym){
+  const [y,m] = ym.split('-').map(Number);
+  return new Date(y, m-1, 1).toLocaleDateString('he-IL', {month:'long', year:'numeric'});
+}
+function setMonthFilter(ym){
+  filterMonth = (filterMonth===ym) ? null : ym;
+  render();
+}
+function clearMonthFilter(){ filterMonth = null; render(); }
+
+function renderMonthlyBreakdown(){
+  const box = $('monthlyList');
+  const nonPending = expenses.filter(e=>e.status!=='pending');
+  if(nonPending.length===0){ box.innerHTML = '<div class="empty">אין עדיין הוצאות לחלוקה לפי חודשים.</div>'; return; }
+  const byMonth = {};
+  nonPending.forEach(e=>{
+    const ym = e.date.slice(0,7);
+    if(!byMonth[ym]) byMonth[ym] = { total:0, a:0, b:0, count:0, net:0 };
+    byMonth[ym].total += e.amount;
+    byMonth[ym].count += 1;
+    if(e.paidBy==='a') byMonth[ym].a += e.amount; else byMonth[ym].b += e.amount;
+    const shareA = e.amount * (e.ratioA/100), shareB = e.amount - shareA;
+    if(e.paidBy==='a'){ byMonth[ym].net += shareB; } else { byMonth[ym].net -= shareA; }
+  });
+  const months = Object.keys(byMonth).sort((x,y)=> y.localeCompare(x));
+  box.innerHTML = months.map(ym=>{
+    const d = byMonth[ym];
+    const active = filterMonth===ym ? ' active' : '';
+    let balanceLine;
+    if(Math.abs(d.net) < 0.01){
+      balanceLine = 'מאוזן החודש';
+    } else if(d.net > 0){
+      balanceLine = `${escapeHtml(names.b)} חייב/ת ל${escapeHtml(names.a)}: <b>${fmt(d.net)}</b>`;
+    } else {
+      balanceLine = `${escapeHtml(names.a)} חייב/ת ל${escapeHtml(names.b)}: <b>${fmt(-d.net)}</b>`;
+    }
+    return `<div class="month-row${active}" onclick="setMonthFilter('${ym}')">
+      <div>
+        <div class="m-name">${escapeHtml(monthLabel(ym))}</div>
+        <div class="m-split">${d.count} הוצאות · ${escapeHtml(names.a)}: ${fmt(d.a)} · ${escapeHtml(names.b)}: ${fmt(d.b)} · סה"כ: ${fmt(d.total)}</div>
+        <div class="m-balance">${balanceLine}</div>
+      </div>
+      <div class="m-total">${fmt(d.total)}</div>
+    </div>`;
+  }).join('');
+}
+let lastFiltered = [];
+
+function csvEscape(v){
+  const s = String(v ?? '');
+  return /[",\n]/.test(s) ? '"' + s.replace(/"/g,'""') + '"' : s;
+}
+$('exportCsvBtn').addEventListener('click', ()=>{
+  const rows = [['תאריך','תיאור','סכום','קטגוריה','עבור מי','שולם ע"י','סטטוס','הערות']];
+  lastFiltered.forEach(e=>{
+    rows.push([
+      e.date,
+      e.desc,
+      e.amount,
+      e.category,
+      expenseKids(e).join(', '),
+      e.paidBy==='a' ? names.a : names.b,
+      e.status==='pending' ? 'ממתין לאישור' : 'מאושר',
+      e.notes || ''
+    ]);
+  });
+  const csv = '\uFEFF' + rows.map(r=>r.map(csvEscape).join(',')).join('\r\n');
+  const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `הוצאות-${todayStr()}.csv`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+let sheetJsLoaded = false;
+function loadSheetJs(){
+  return new Promise((resolve, reject)=>{
+    if(window.XLSX){ sheetJsLoaded = true; resolve(); return; }
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+    s.onload = ()=>{ sheetJsLoaded = true; resolve(); };
+    s.onerror = ()=> reject(new Error('טעינת ספריית האקסל נכשלה'));
+    document.head.appendChild(s);
+  });
+}
+$('exportXlsxBtn').addEventListener('click', async ()=>{
+  const btn = $('exportXlsxBtn');
+  const original = btn.textContent;
+  btn.disabled = true; btn.textContent = sheetJsLoaded ? 'מכין קובץ...' : 'טוען (פעם ראשונה)...';
+  try{
+    await loadSheetJs();
+    const header = ['תאריך','תיאור','סכום','קטגוריה','עבור מי','סטטוס','הערות'];
+    const rowFor = e => [
+      e.date, e.desc, e.amount, e.category, expenseKids(e).join(', '),
+      e.status==='pending' ? 'ממתין לאישור' : 'מאושר',
+      e.notes || ''
+    ];
+    const colWidths = [{wch:12},{wch:26},{wch:10},{wch:12},{wch:16},{wch:12},{wch:28}];
+
+    const listA = lastFiltered.filter(e=>e.paidBy==='a').sort((x,y)=> x.date.localeCompare(y.date));
+    const listB = lastFiltered.filter(e=>e.paidBy==='b').sort((x,y)=> x.date.localeCompare(y.date));
+    const totalA = listA.reduce((s,e)=>s+e.amount,0);
+    const totalB = listB.reduce((s,e)=>s+e.amount,0);
+
+    const net = computeBalance();
+    const balanceLine = Math.abs(net)<0.01 ? 'המאזן מאוזן'
+      : net>0 ? `${names.b} חייב/ת ל${names.a}: ${fmt(net)}`
+      : `${names.a} חייב/ת ל${names.b}: ${fmt(-net)}`;
+
+    const catTotals = {};
+    lastFiltered.forEach(e=>{
+      if(!catTotals[e.category]) catTotals[e.category] = {a:0,b:0};
+      catTotals[e.category][e.paidBy] += e.amount;
+    });
+    const catRows = Object.keys(catTotals).sort().map(cat=>[
+      cat, catTotals[cat].a || 0, catTotals[cat].b || 0, (catTotals[cat].a||0)+(catTotals[cat].b||0)
+    ]);
+
+    const summaryAoa = [
+      ['סיכום הוצאות משותפות'],
+      ['הופק בתאריך', todayStr()],
+      [],
+      ['', `שילם/ה ${names.a}`, `שילם/ה ${names.b}`, 'סה"כ'],
+      ['סכום', totalA, totalB, totalA+totalB],
+      ['מספר הוצאות', listA.length, listB.length, listA.length+listB.length],
+      [],
+      ['מאזן', balanceLine],
+      [],
+      ['פירוט לפי קטגוריה'],
+      ['קטגוריה', `${names.a}`, `${names.b}`, 'סה"כ'],
+      ...catRows
+    ];
+    const wsSummary = window.XLSX.utils.aoa_to_sheet(summaryAoa);
+    wsSummary['!cols'] = [{wch:20},{wch:16},{wch:16},{wch:14}];
+
+    const wsA = window.XLSX.utils.aoa_to_sheet([header, ...listA.map(rowFor), [], ['', '', totalA, '', '', '', 'סה"כ']]);
+    wsA['!cols'] = colWidths;
+    const wsB = window.XLSX.utils.aoa_to_sheet([header, ...listB.map(rowFor), [], ['', '', totalB, '', '', '', 'סה"כ']]);
+    wsB['!cols'] = colWidths;
+
+    const wb = window.XLSX.utils.book_new();
+    window.XLSX.utils.book_append_sheet(wb, wsSummary, 'סיכום');
+    window.XLSX.utils.book_append_sheet(wb, wsA, `${names.a} - מפורט`.slice(0,31));
+    window.XLSX.utils.book_append_sheet(wb, wsB, `${names.b} - מפורט`.slice(0,31));
+    window.XLSX.writeFile(wb, `הוצאות-${todayStr()}.xlsx`);
+  }catch(err){
+    console.error(err);
+    alert('הייצוא לאקסל נכשל — נסו שוב, או השתמשו בינתיים בייצוא ל-CSV.');
+  }finally{
+    btn.disabled = false; btn.textContent = original;
+  }
+});
+
+$('exportPdfBtn').addEventListener('click', ()=>{
+  const net = computeBalance();
+  const balanceLine = Math.abs(net)<0.01 ? 'המאזן מאוזן'
+    : net>0 ? `${names.b} חייב/ת ל${names.a}: ${fmt(net)}`
+    : `${names.a} חייב/ת ל${names.b}: ${fmt(-net)}`;
+  const rows = lastFiltered.map(e=>`
+    <tr>
+      <td>${escapeHtml(e.date)}</td>
+      <td>${escapeHtml(e.desc)}</td>
+      <td>${fmt(e.amount)}</td>
+      <td>${escapeHtml(e.category)}</td>
+      <td>${escapeHtml(expenseKids(e).join(', '))}</td>
+      <td>${escapeHtml(e.paidBy==='a'?names.a:names.b)}</td>
+      <td>${e.status==='pending'?'ממתין':'מאושר'}</td>
+    </tr>`).join('');
+  $('printArea').innerHTML = `
+    <h1>דוח הוצאות — ${escapeHtml(names.a)} ו${escapeHtml(names.b)}</h1>
+    <div class="meta-line">הופק בתאריך ${todayStr()} · ${lastFiltered.length} הוצאות</div>
+    <table>
+      <thead><tr><th>תאריך</th><th>תיאור</th><th>סכום</th><th>קטגוריה</th><th>עבור מי</th><th>שולם ע"י</th><th>סטטוס</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <div class="totals-line">${escapeHtml(balanceLine)}</div>
+  `;
+  window.print();
+});
+
+function renderWeekdaySetter(){
+  const box = $('weekdaySetter');
+  box.innerHTML = weeklyPattern.map((w,i)=>`
+    <div class="wbtn owner-${w}" data-i="${i}">
+      <span class="wname">${WD_NAMES_FIXED[i]}</span>
+      <span>${w==='a'?escapeHtml(names.a).slice(0,4):w==='b'?escapeHtml(names.b).slice(0,4):'משותף'}</span>
+    </div>`).join('');
+  box.querySelectorAll('.wbtn').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      const i = parseInt(btn.dataset.i);
+      const order = ['a','b','shared'];
+      weeklyPattern[i] = order[(order.indexOf(weeklyPattern[i])+1)%3];
+      await savePattern();
+      renderWeekdaySetter(); renderCalendar();
+    });
+  });
+}
+
+function effectiveOwner(dateStr){
+  for(const v of vacations){
+    if(dateStr >= v.start && dateStr <= v.end) return {who:v.who, vacation:v};
+  }
+  const ov = overrides.find(o=>o.date===dateStr);
+  if(ov) return {who: ov.who, override: ov};
+  const d = new Date(dateStr+'T00:00:00');
+  return {who: weeklyPattern[d.getDay()]};
+}
+
+$('calPrev').addEventListener('click', ()=>{ calView.setMonth(calView.getMonth()-1); renderCalendar(); });$('calNext').addEventListener('click', ()=>{ calView.setMonth(calView.getMonth()+1); renderCalendar(); });
+
+function renderCalendar(){
+  const y = calView.getFullYear(), m = calView.getMonth();
+  $('calTitle').textContent = calView.toLocaleDateString('he-IL', {month:'long', year:'numeric'});
+  const grid = $('calGrid');
+  let html = WD_NAMES_FIXED.map(w=>`<div class="cal-wd">${w}</div>`).join('');
+  const firstDay = new Date(y,m,1).getDay();
+  const daysInMonth = new Date(y,m+1,0).getDate();
+  for(let i=0;i<firstDay;i++) html += '<div class="cal-day empty-cell"></div>';
+  for(let d=1; d<=daysInMonth; d++){
+    const dateStr = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const eff = effectiveOwner(dateStr);
+    const isToday = dateStr === todayStr();
+    const vacMark = eff.vacation ? '<span class="vac-mark">✈</span>' : '';
+    const ovMark = (!eff.vacation && eff.override) ? '<span class="ov-mark">↻</span>' : '';
+    const hasEvt = events.some(ev=>ev.date===dateStr);
+    const evtMark = hasEvt ? '<span class="evt-mark">📌</span>' : '';
+    html += `<div class="cal-day owner-${eff.who}${isToday?' today':''}" title="${eff.vacation?escapeHtml(eff.vacation.label||''):''}">${vacMark}${d}${ovMark}${evtMark}</div>`;
+  }
+  grid.innerHTML = html;
+}
+
+$('ovDate').valueAsDate = new Date();$('ovAddBtn').addEventListener('click', async ()=>{
+  const date = $('ovDate').value, who = $('ovWho').value, note =$('ovNote').value.trim();
+  if(!date){ alert('נא לבחור תאריך'); return; }
+  overrides = overrides.filter(o=>o.date!==date);
+  overrides.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), date, who, note });
+  await saveOverrides();
+  $('ovNote').value='';
+  renderOverridesList(); renderCalendar();
+});
+function renderOverridesList(){
+  const sorted = [...overrides].sort((a,b)=>a.date.localeCompare(b.date));
+  $('ovList').innerHTML = sorted.length===0 ? '<div class="empty">אין שינויים חד־פעמיים.</div>' : sorted.map(o=>`
+    <div class="sched-list-item">
+      <span class="who-dot" style="background:${whoColorVar(o.who)}"></span>
+      <div class="sinfo"><div class="sdate">${o.date} · אצל ${escapeHtml(whoLabel(o.who))}</div>${o.note?`<div class="snote">${escapeHtml(o.note)}</div>`:''}</div>
+      <button class="del" onclick="deleteOverride('${o.id}')">✕</button>
+    </div>`).join('');
+}
+async function deleteOverride(id){ overrides = overrides.filter(o=>o.id!==id); await saveOverrides(); renderOverridesList(); renderCalendar(); }
+
+$('vacStart').valueAsDate = new Date();$('vacAddBtn').addEventListener('click', async ()=>{
+  const start = $('vacStart').value, end =$('vacEnd').value || start, who = $('vacWho').value, label =$('vacLabel').value.trim();
+  if(!start){ alert('נא לבחור תאריך התחלה'); return; }
+  if(end < start){ alert('תאריך הסיום צריך להיות אחרי ההתחלה'); return; }
+  vacations.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), start, end, who, label });
+  await saveVacations();
+  $('vacLabel').value='';$('vacEnd').value='';
+  renderVacationsList(); renderCalendar();
+});
+function renderVacationsList(){
+  const sorted = [...vacations].sort((a,b)=>a.start.localeCompare(b.start));
+  $('vacList').innerHTML = sorted.length===0 ? '<div class="empty">אין חופשות רשומות.</div>' : sorted.map(v=>`
+    <div class="sched-list-item">
+      <span class="who-dot" style="background:${whoColorVar(v.who)}"></span>
+      <div class="sinfo"><div class="sdate">${escapeHtml(v.label||'חופשה')} · אצל ${escapeHtml(whoLabel(v.who))}</div><div class="snote">${v.start} עד ${v.end}</div></div>
+      <button class="del" onclick="deleteVacation('${v.id}')">✕</button>
+    </div>`).join('');
+}
+async function deleteVacation(id){ vacations = vacations.filter(v=>v.id!==id); await saveVacations(); renderVacationsList(); renderCalendar(); }
+
+$('holDate').valueAsDate = new Date();$('holAddBtn').addEventListener('click', async ()=>{
+  const name = $('holName').value.trim(), date = $('holDate').value, who =$('holWho').value;
+  const where = $('holWhere').value.trim(), note =$('holNote').value.trim();
+  if(!name || !date){ alert('נא למלא שם חג ותאריך'); return; }
+  holidays.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), name, date, who, where, note });
+  await saveHolidays();
+  $('holName').value=''; $('holWhere').value='';$('holNote').value='';
+  renderHolidaysList();
+});
+function renderHolidaysList(){
+  const sorted = [...holidays].sort((a,b)=> b.date.localeCompare(a.date));
+  $('holList').innerHTML = sorted.length===0 ? '<div class="empty">אין חגים רשומים עדיין.</div>' : sorted.map(h=>`
+    <div class="sched-list-item">
+      <span class="who-dot" style="background:${whoColorVar(h.who)}"></span>
+      <div class="sinfo">
+        <div class="sdate">${escapeHtml(h.name)} (${h.date}) · אצל ${escapeHtml(whoLabel(h.who))}</div>
+        <div class="snote">${h.where?escapeHtml(h.where):''}${h.where && h.note ? ' · ' : ''}${h.note?escapeHtml(h.note):''}</div>
+      </div>
+      <button class="del" onclick="deleteHoliday('${h.id}')">✕</button>
+    </div>`).join('');
+}
+async function deleteHoliday(id){ holidays = holidays.filter(h=>h.id!==id); await saveHolidays(); renderHolidaysList(); }
+
+$('evtDate').valueAsDate = new Date();$('evtAddBtn').addEventListener('click', async ()=>{
+  const title = $('evtTitle').value.trim(), date = $('evtDate').value, time =$('evtTime').value.trim();
+  const kid = $('evtKid').value, location = $('evtLocation').value.trim(), note =$('evtNote').value.trim();
+  if(!title || !date){ alert('נא למלא כותרת ותאריך'); return; }
+  events.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), title, date, time, kid, location, note });
+  await saveEvents();
+  $('evtTitle').value=''; $('evtTime').value='';$('evtLocation').value=''; $('evtNote').value='';$('evtKid').value='';
+  renderEventsList(); renderCalendar();
+});
+function renderEventsList(){
+  const today = todayStr();
+  const sorted = [...events].sort((a,b)=> a.date.localeCompare(b.date));
+  const upcoming = sorted.filter(e=>e.date>=today);
+  const past = sorted.filter(e=>e.date<today).reverse();
+  const ordered = [...upcoming, ...past];
+  $('evtList').innerHTML = ordered.length===0 ? '<div class="empty">אין אירועים רשומים.</div>' : ordered.map(e=>{
+    const isPast = e.date < today;
+    const childTag = e.kid ? `<span class="child-tag">${escapeHtml(e.kid)}</span>` : '';
+    return `<div class="sched-list-item" style="${isPast?'opacity:.55;':''}">
+      <span class="who-dot" style="background:var(--shared-color)"></span>
+      <div class="sinfo">
+        <div class="sdate">${escapeHtml(e.title)} — ${e.date}${e.time?' '+escapeHtml(e.time):''} ${childTag}</div>
+        <div class="snote">${e.location?escapeHtml(e.location):''}${e.location && e.note ? ' · ':''}${e.note?escapeHtml(e.note):''}</div>
+      </div>
+      <button class="del" onclick="deleteEvent('${e.id}')">✕</button>
+    </div>`;
+  }).join('');
+}
+async function deleteEvent(id){ events = events.filter(e=>e.id!==id); await saveEvents(); renderEventsList(); renderCalendar(); }
+
+window.__onRemoteUpdate = loadAll;
+loadAll();
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>
     --cat-clothes-bg:#FCE4EC;
     --cat-fun-color:#E65100;
     --cat-fun-bg:#FFF3E0;
